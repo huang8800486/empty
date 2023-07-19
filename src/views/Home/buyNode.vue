@@ -23,6 +23,7 @@
         };
         getbuyNode(obj)
           .then((result: any) => {
+            options.setUpdataTime(new Date().getTime());
             options.setIsButtonLoading(new Date().getTime());
             if (result.message) {
               Toast.success(result.message, {
