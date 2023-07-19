@@ -25,14 +25,14 @@
   </div>
   <Modal v-model:visible="rechargeFlag" type="custom" :closeIcon="true" :title="'充值'" @colse="closeFun">
     <div class="nick_box_wrap">
-      <BaseInput v-model="rechargeValue" :placeholder="'请输入数量'" :isNumber="true" />
+      <BaseInput v-model="rechargeValue" :placeholder="'请输入数量'" :isDemi="true" />
       <!-- <span class="note">*不能输入中文</span> -->
       <BaseButton :btnId="nanoid()" @callback="comfirmRecharge">确定</BaseButton>
     </div>
   </Modal>
   <Modal v-model:visible="withdrawFlag" type="custom" :closeIcon="true" :title="'提现'" @colse="closeFun">
     <div class="nick_box_wrap">
-      <BaseInput v-model="withdrawValue" :placeholder="'请输入数量'" :isNumber="true" />
+      <BaseInput v-model="withdrawValue" :placeholder="'请输入数量'" :isDemi="true" />
       <!-- <span class="note">*不能输入中文</span> -->
       <BaseButton :btnId="nanoid()" @callback="comfirmWithdraw">确定</BaseButton>
     </div>
@@ -173,7 +173,7 @@
     withdrawValue.value &&
       currentFlag.value &&
       currentObj.value[currentFlag.value]
-        .withdrawMethods({ address: getFullAccount.value, value: rechargeValue.value })
+        .withdrawMethods({ address: getFullAccount.value, value: withdrawValue.value })
         .then((result: any) => {
           getInstance(getLedgerInstance.value, currentObj.value[currentFlag.value].withdrawName, [
             result.amount,

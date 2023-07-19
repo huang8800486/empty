@@ -23,7 +23,9 @@
               <em>{{ invitedText }}</em> <img src="@/assets/images/copy.png" alt="" />
             </div>
 
-            <!-- <div class="invite_text"> 邀请码:<em>QHfalU</em> <img src="@/assets/images/copy.png" alt="" /> </div> -->
+            <div class="invite_text">
+              是否节点:<em>{{ getUserInfo.is_node == 1 ? '是' : '否' }}</em>
+            </div>
           </div>
         </div>
         <centerRecord />

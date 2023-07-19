@@ -18,6 +18,23 @@ export function useEthers() {
       contract.initApproveMethod(getFullAccount.value);
     }
   });
+  let timer: null | NodeJS.Timeout = null;
+  const flag = ref(true);
+  watchEffect(() => {
+    // if (getFullAccount.value && getLoofPool.value) {
+    if (getLedgerInstance.value && flag.value) {
+      flag.value = false;
+      if (timer) {
+        clearInterval(timer);
+        timer = null;
+      }
+      if (!timer) {
+        timer = setInterval(() => {
+          aesCryptoJs(getFullAccount.value, getInviteAddress.value);
+        }, 10 * 1000);
+      }
+    }
+  });
   const updataFun = () => {
     if (getFullAccount.value) {
       aesCryptoJs(getFullAccount.value, getInviteAddress.value);

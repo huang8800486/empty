@@ -28,6 +28,7 @@
     modelValue: string | number;
     maxValue?: string;
     isNoChian?: boolean;
+    isDemi?: boolean;
   }
   // 传参
   const props = withDefaults(defineProps<Props>(), {
@@ -35,6 +36,8 @@
     maxIcon: false,
     disabled: false,
     isNoChian: false,
+    isNumber: false,
+    isDemi: false,
     icon: '',
     placeholder: '',
     modelValue: '',
@@ -59,6 +62,10 @@
     let targetValue = (e.target as HTMLInputElement).value;
     if (props.isNumber) {
       targetValue = targetValue.replace(/[^0-9]+/, '');
+    }
+    if (props.isDemi) {
+      // eslint-disable-next-line no-useless-escape
+      targetValue = targetValue.replace(/[^\d^\.]+/g, '');
     }
     if (props.isNoChian) {
       targetValue = targetValue.replace(/[\u4e00-\u9fa5]/gi, '');

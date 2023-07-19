@@ -1,5 +1,4 @@
 <template>
-  {{ getIsButtonLoading }}
   <BaseButton :btnId="nanoid()" @callback="buyNode" :disabled="getUserInfo.is_node == 1">节点认购</BaseButton>
 </template>
 
@@ -27,6 +26,10 @@
             options.setIsButtonLoading(new Date().getTime());
             if (result.message) {
               Toast.success(result.message, {
+                timeout: 2000,
+              });
+            } else {
+              Toast.success(t('common.comfirm'), {
                 timeout: 2000,
               });
             }
