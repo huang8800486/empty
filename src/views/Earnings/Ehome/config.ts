@@ -7,11 +7,7 @@ export function coinListManage() {
   });
   const productIds = ref<any>([]);
   const { getFullAccount, getUserCode } = useStoreMethod();
-  watchEffect(() => {
-    if (getUserCode.value > -1) {
-      initProduct();
-    }
-  });
+
   const initProduct = () => {
     getProduct()
       .then((result: any) => {
@@ -67,26 +63,26 @@ export function coinListManage() {
               if (res && res.length) {
                 for (let j = 0; j < res.length; j++) {
                   const items = res[j];
+                  const origin = coinList.value[items.coin_symbol][items.product_id];
                   // if (items.)
-                  console.log(items, 'items.status');
-                  coinList.value[items.coin_symbol][items.product_id].status = items.status;
-                  coinList.value[items.coin_symbol][items.product_id].income = items.income;
-                  if (coinList.value[items.coin_symbol][items.product_id].status === 0) {
-                    coinList.value[items.coin_symbol][items.product_id].children[0].disabled = true;
-                    coinList.value[items.coin_symbol][items.product_id].children[1].disabled = true;
-                    coinList.value[items.coin_symbol][items.product_id].children[2].disabled = false;
-                  } else if (coinList.value[items.coin_symbol][items.product_id].status === 1) {
-                    coinList.value[items.coin_symbol][items.product_id].children[0].disabled = false;
-                    coinList.value[items.coin_symbol][items.product_id].children[1].disabled = true;
-                    coinList.value[items.coin_symbol][items.product_id].children[2].disabled = true;
-                  } else if (coinList.value[items.coin_symbol][items.product_id].status === 2) {
-                    coinList.value[items.coin_symbol][items.product_id].children[0].disabled = false;
-                    coinList.value[items.coin_symbol][items.product_id].children[1].disabled = false;
-                    coinList.value[items.coin_symbol][items.product_id].children[2].disabled = false;
-                  } else if (coinList.value[items.coin_symbol][items.product_id].status === 3) {
-                    coinList.value[items.coin_symbol][items.product_id].children[0].disabled = true;
-                    coinList.value[items.coin_symbol][items.product_id].children[1].disabled = false;
-                    coinList.value[items.coin_symbol][items.product_id].children[2].disabled = true;
+                  origin.status = items.status;
+                  origin.income = items.income;
+                  if (origin.status === 0) {
+                    origin.children[0].disabled = true;
+                    origin.children[1].disabled = true;
+                    origin.children[2].disabled = false;
+                  } else if (origin.status === 1) {
+                    origin.children[0].disabled = false;
+                    origin.children[1].disabled = true;
+                    origin.children[2].disabled = true;
+                  } else if (origin.status === 2) {
+                    origin.children[0].disabled = true;
+                    origin.children[1].disabled = true;
+                    origin.children[2].disabled = true;
+                  } else if (origin.status === 3) {
+                    origin.children[0].disabled = true;
+                    origin.children[1].disabled = false;
+                    origin.children[2].disabled = true;
                   }
                 }
               }
@@ -100,6 +96,11 @@ export function coinListManage() {
         console.log('getProduct', err);
       });
   };
+  watchEffect(() => {
+    if (getUserCode.value > -1) {
+      initProduct();
+    }
+  });
 
   return {
     coinList,

@@ -1,6 +1,8 @@
 import { usePublicMethod } from '/@/utils/publicMethod';
+import VueScrollTo from 'vue-scrollto';
 export function navListManager() {
   const { Toast } = usePublicMethod();
+  const router = useRouter();
   const navList = computed(() => {
     return [
       { text: '首页', path: '/index', isOpen: true },
@@ -16,8 +18,15 @@ export function navListManager() {
   const waitFun = () => {
     Toast.info('即将开启');
   };
+  const scrollTo = () => {
+    router.push('/index');
+    setTimeout(() => {
+      VueScrollTo.scrollTo('#buyNode');
+    }, 600);
+  };
   return {
     waitFun,
     navList,
+    scrollTo,
   };
 }
