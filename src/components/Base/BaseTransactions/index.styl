@@ -1,0 +1,138 @@
+
+.recent_transactions_list {
+  width: 100%;
+  position: relative;
+  padding: 9px 0 40px;
+
+  .recent_item {
+    width: 100%;
+    position: relative;
+    padding: 12px;
+    margin: 11px 0;
+    border-radius: 13px;
+    cs('background', 'base-box-background');
+    display: flex;
+    flex-wrap: wrap;
+
+    .sub_item {
+      padding-top: 5px;
+    }
+
+    &.flex {
+      display: flex;
+    }
+
+    .recent_titles {
+      display: flex;
+      justify-content: space-between;
+      cursor: pointer;
+
+      .img_box {
+        width: 47px;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        margin-right: 23px;
+
+        img {
+          width: 47px;
+          height: 47px;
+          display: block;
+          border-radius: 8px;
+        }
+      }
+
+      .title_box {
+        width: 100%;
+
+        span {
+          font-weight: bold;
+          margin-bottom: 9px;
+          width: 100%;
+          text-align: left;
+          display: block;
+        }
+
+        p {
+          width: 60%;
+          text-align: left;
+          color: #878787;
+          text-overflow: ellipsis;
+          overflow: hidden;
+        }
+      }
+    }
+
+    .recent_titles {
+      ms('width', 70% 60% 28% 180px 250px 250px);
+      position: relative;
+      cursor: pointer;
+    }
+
+    .recent_buy {
+      ms('width', 30% 40% 18% 180px 211px 211px);
+      position: relative;
+    }
+
+    .recent_owner {
+      ms('padding-top', 10px 10px 10px 0 0 0);
+      ms('width', 33.3% 33.3% 18% 180px 211px 211px);
+      position: relative;
+    }
+
+    .recent_tx {
+      ms('padding-top', 10px 10px 10px 0 0 0);
+      ms('width', 33.3% 33.3% 18% 180px 211px 211px);
+      position: relative;
+    }
+
+    .recent_bt {
+      ms('padding-top', 10px 10px 10px 0 0 0);
+      ms('width', 33.3% 33.3% 18% 180px 211px 211px);
+      position: relative;
+    }
+
+    .items {
+      span {
+        width: 100%;
+        display: block;
+        margin-bottom: 8px;
+        color: #F5A603;
+      }
+
+      h4 {
+        width: 100%;
+        display: block;
+        margin-bottom: 8px;
+        font-weight: bold;
+        cs('color', 'base-font-color');
+      }
+
+      a {
+        margin-bottom: 8px;
+        color: #F5A603;
+        display: block;
+      }
+
+      .behavior {
+        height: 18px;
+        background: #F5A603;
+        color: #fff;
+        border-radius: 18px;
+        overflow: hidden;
+        line-height: 18px;
+        padding: 0 10px;
+        display: inline-block;
+
+        &.Sell {
+          background: #f93b5d;
+        }
+      }
+
+      p {
+        color: #878787;
+        line-height: 18px;
+      }
+    }
+  }
+}

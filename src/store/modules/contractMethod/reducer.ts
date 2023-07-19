@@ -1,0 +1,32 @@
+import { ContratStateType } from './types';
+
+export const initState: ContratStateType = {
+  ledgerInstance: null,
+  usdtInstance: null,
+  wtInstance: null,
+  ledgerToken: '',
+  USDTToken: '',
+  WTToken: '',
+  isUsdtApprove: false,
+  isWtApprove: false,
+  userInfo: {
+    id: 0,
+    address: '',
+    nick_name: '',
+    referrer: '',
+    wt_balance: '0',
+    wt_profit: '0',
+    usdt_balance: '0',
+    usdt_profit: '0',
+    usdt_freeze: '0',
+    wt_freeze: '0',
+    invitation_data: '',
+    nonce: 0,
+    is_blacklist: 0,
+    is_node: 0,
+    total_invitation: 0,
+    create_time: '',
+    update_time: '',
+  },
+  userCode: -1,
+};

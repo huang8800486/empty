@@ -1,0 +1,101 @@
+.base_components_list_layout {
+  width: 100%;
+  position: relative;
+
+  &.more {
+    .list_item {
+      max-height: none !important;
+    }
+  }
+
+  .base_components_list {
+    width: 100%;
+    position: relative;
+
+    .title_list {
+      width: 100%;
+      position: relative;
+      display: flex;
+      ms('padding-top', 7px 9px 11px 13px 15px 17px);
+      ms('padding-bottom', 7px 9px 11px 13px 15px 17px);
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid #000;
+      ms('font-size', 12px 13px 14px 16px 18px 20px);
+       font-family: 'Source Han Sans CN-Regular';
+      font-weight: bold;
+      color: #1A1210;
+
+      span {
+        flex: 1;
+        padding-right: 5px;
+
+        &:first-child {
+          // padding: 0 0.12rem;
+        }
+      }
+    }
+
+    .list_item_wrap {
+      width: 100%;
+      position: relative;
+
+      .list_item {
+        width: 100%;
+        position: relative;
+        max-height: 437px;
+
+        .item {
+          width: 100%;
+          position: relative;
+          display: flex;
+          ms('padding-top', 7px 11px 15px 19px 21px 21px);
+          ms('padding-bottom', 7px 11px 15px 19px 21px 21px);
+          align-items: center;
+          min-height: 40px;
+          justify-content: space-between;
+          ms('font-size', 12px 13px 14px 15px 16px 16px);
+           font-family: 'Source Han Sans CN-Regular';
+          font-weight: 400;
+          color: #000000;
+          border-bottom: 1px solid #000;
+
+          >span {
+            flex: 1;
+            padding-right: 5px;
+          }
+
+          .high {
+            color: #FFE87A;
+          }
+        }
+      }
+    }
+
+    &.one {
+      .title_list {
+        span {
+          flex: 1;
+        }
+      }
+
+      .list_item_wrap {
+        .list_item {
+          .item {
+            flex: 1;
+          }
+        }
+      }
+    }
+
+    .list_item_noData {
+      width: 100%;
+      position: relative;
+      height: 200px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+    }
+  }
+}

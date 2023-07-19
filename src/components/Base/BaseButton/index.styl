@@ -1,0 +1,147 @@
+.base_components_button_layout {
+  width: 100%;
+  display: inline-block;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  ms('padding-left', 8px 12px 16px 18px 20px 20px);
+  ms('padding-right', 8px 12px 16px 18px 20px 20px);
+  ms('min-height', 40px 42px 44px 46px 48px 48px);
+  ms('font-size', 14px 15px 16px 17px 18px 19px);
+  text-align: center;
+  background: #000;
+  font-weight: bold;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+
+  &.isLoading {
+    background: #708db7;
+
+    a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      .pay_loading {
+        display: flex;
+        align-items: center;
+        margin-left: 2px;
+        flex: 1;
+
+        span {
+          width: 20px;
+          height: 20px;
+          margin-right: 2px;
+          animation: animation-circle 2s linear infinite;
+        }
+      }
+    }
+  }
+
+  // border: 1px solid $base-active-color;
+  &.none {
+    border: 2px solid $base-active-color;
+    background: none;
+
+    a {
+      color: $base-active-color;
+    }
+  }
+
+  &.inline {
+    width: auto;
+    display: inline-block;
+
+    a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 50px;
+    }
+  }
+
+  &.inlineBlock {
+    width: auto;
+    margin: 0 auto;
+  }
+
+  &.text_right {
+    text-align: right;
+  }
+
+  &.padd {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  &.notbg {
+    background: none;
+
+    a {
+      color: $base-active-color;
+    }
+  }
+
+  &.disabled {
+    background: linear-gradient(215deg, #DADFE7 0%, #A3ABB8 100%);
+    cursor: not-allowed;
+
+    a {
+      cursor: not-allowed;
+    }
+
+    &:hover {
+      opacity: 1;
+    }
+  }
+
+  &.gray {
+    background: #aaa;
+  }
+
+  &.white {
+    background: #fff;
+
+    a {
+      color: #000;
+    }
+  }
+
+  &:hover {
+    opacity: 0.8;
+  }
+
+  a {
+    display: block;
+    color: #fff;
+    position: relative;
+    font-family: 'Source Han Sans CN Regular';
+    font-weight: bold;
+
+    img {
+      width: 100%;
+      display: block;
+    }
+  }
+
+  button {
+    color: #17181e;
+  }
+}
+
+@keyframes animation-circle {
+  0% {
+    transform: rotate(0deg) scale(1);
+  }
+
+  50% {
+    transform: rotate(180deg) scale(0.9);
+  }
+
+  100% {
+    transform: rotate(360deg) scale(1);
+  }
+}

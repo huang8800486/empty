@@ -1,0 +1,273 @@
+.market_content_wrapper {
+  width: 100%;
+  position: relative;
+  ms('padding-bottom', 15px 25px 35px 45px 55px 55px);
+
+  .market_title {
+    width: 100%;
+    position: relative;
+    background: #000;
+    ms('padding-top', 9px 11px 13px 15px 17px 19px);
+    ms('padding-bottom', 36px 36px 46px 56px 56px 56px);
+
+    .titles {
+      width: 100%;
+      position: relative;
+      display: flex;
+      align-items: center;
+      ms('font-size', 18px 24px 30px 36px 40px 40px);
+      font-family: 'Source Han Sans CN Bold';
+      font-weight: bold;
+      color: #FFFFFF;
+      ms('margin-bottom', 22px 27px 32px 37px 42px 42px);
+
+      img {
+        ms('width', 24px 28px 30px 32px 36px 38px);
+        display: block;
+      }
+
+      h2 {
+        ms('margin-left', 6px 7px 8px 9px 10px 11px);
+      }
+    }
+  }
+
+  .mark_text_wrap {
+    width: 100%;
+    position: relative;
+    display: flex;
+    align-items: center;
+    ms('margin-bottom', 13px 18px 23px 28px 33px 33px);
+
+    .mark_text {
+      ms('width', 33.33% 33.33% 20% 20% 20% 20%);
+      display: flex;
+      align-items: center;
+
+      .imgs {
+        ms('width', 35px 35px 40px 50px 60px 63px);
+        ms('height', 35px 35px 40px 50px 60px 63px);
+
+        img {
+          width: 100%;
+          display: block;
+        }
+      }
+
+      .text {
+        ms('margin-left', 4px 6px 8px 10px 12px 12px);
+
+        h3 {
+          ms('font-size', 12px 13px 14px 15px 16px 16px);
+          font-family: 'Source Han Sans CN-Regular';
+          font-weight: 400;
+          color: #6E6E6E;
+          line-height: 1.5;
+        }
+
+        span {
+          ms('font-size', 15px 17px 19px 21px 23px 23px);
+          font-family: Poppins-Bold, Poppins;
+          font-weight: bold;
+          color: #FFFFFF;
+          display: block;
+          line-height: 1.5;
+        }
+      }
+    }
+  }
+
+  .market_content_wrap {
+    width: 100%;
+    position: relative;
+    ms('margin-top', -36px -36px -46px -56px -56px -56px);
+
+    .market_content {
+      width: 100%;
+      position: relative;
+      background: #fff;
+      border-radius: 15px;
+      min-height: 65vh;
+
+      .market_search_box {
+        width: 100%;
+        position: relative;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        ms('padding-top', 10px 14px 18px 22px 26px 28px);
+        ms('padding-bottom', 10px 14px 18px 22px 26px 30px);
+        ms('padding-left', 10px 13px 16px 19px 22px 23px);
+        ms('padding-right', 10px 13px 16px 19px 22px 23px);
+
+        span {
+          ms('font-size', 13px 15px 16px 18px 20px 20px);
+          font-family: 'Source Han Sans CN-Bold';
+          font-weight: bold;
+          color: #000000;
+        }
+
+        .search_input {
+          width: 70%;
+          max-width: 341px;
+          position: relative;
+
+          img {
+            position: absolute;
+            left: 9px;
+            top: 50%;
+            transform: translate3d(0, -50%, 0);
+            width: 12px;
+            z-index: 2;
+          }
+
+          .base_components_input_layout .input_wrap {
+            height: 34px;
+            border: 1px solid #EFEFEF;
+
+            input {
+              font-size: 12px;
+              text-indent: 13px;
+            }
+          }
+        }
+      }
+
+      .market_list_wrap {
+        width: 100%;
+        position: relative;
+        overflow-x: auto;
+
+        .base_components_list_layout .base_components_list .title_list, .base_components_list_layout .base_components_list .list_item_wrap .list_item .item {
+          ms('padding-left', 10px 13px 16px 19px 22px 23px);
+          ms('padding-right', 10px 13px 16px 19px 22px 23px);
+          ms('width', 200% 150% 100% 100% 100% 100%);
+
+          span {
+            text-align: center;
+            display: block;
+
+            &:first-child {
+              text-align: left;
+            }
+          }
+        }
+
+        .coin_box {
+          display: flex;
+          align-items: center;
+
+          .coin_img {
+            ms('width', 20px 22px 24px 28px 32px 32px);
+            flex: 0 0 20px;
+            ms('margin-right', 3px 5px 7px 9px 11px 13px);
+
+            @media (min-width: 480px) {
+              flex: 0 0 22px;
+            }
+
+            @media (min-width: 768px) {
+              flex: 0 0 24px;
+            }
+
+            @media (min-width: 992px) {
+              flex: 0 0 28px;
+            }
+
+            @media (min-width: 1200px) {
+              flex: 0 0 32px;
+            }
+
+            @media (min-width: 1600px) {
+              flex: 0 0 32px;
+            }
+
+            img {
+              width: 100%;
+              display: block;
+            }
+          }
+        }
+
+        .coin_text {
+          max-width: none;
+
+          em {
+            ms('font-size', 13px 13px 14px 15px 16px 16px);
+            font-family: 'Source Han Sans CN Medium';
+            font-weight: 500;
+            color: #000000;
+            display: block;
+            text-overflow: ellipsis;
+            overflow: hidden;
+            width: 100%;
+          }
+
+          p {
+            font-size: 12px;
+            ms('margin-top', 2px 4px 5px 6px 7px 8px);
+            color: #6E6E6E;
+          }
+
+          a {
+            ms('padding-top', 6px 7px 8px 9px 10px 11px 12px);
+            ms('padding-bottom', 6px 7px 8px 9px 10px 11px 12px);
+            ms('padding-left', 8px 10px 12px 14px 16px 18px);
+            ms('padding-right', 8px 10px 12px 14px 16px 18px);
+            background: #F7F7F9;
+            border-radius: 4px;
+            opacity: 1;
+            border: 1px solid #E6E6E6;
+            font-size: 12px;
+            transition();
+
+            &:hover {
+              text-decoration: none;
+              background-color: rgba(56, 61, 81, 0.04);
+              border: 1px solid rgb(56, 61, 81);
+            }
+          }
+        }
+
+        .base_components_list_layout .base_components_list .title_list {
+          ms('font-size', 12px 12px 13px 13px 14px 14px);
+          font-family: 'Source Han Sans CN-Regular';
+          font-weight: 400;
+          color: #6E6E6E;
+          border-color: #e2e2e2;
+
+          span {
+            &:last-child {
+              opacity: 0;
+            }
+          }
+        }
+
+        .base_components_list_layout .base_components_list .list_item_wrap .list_item {
+          max-height: none;
+
+          .item {
+            border-color: #e2e2e2;
+            transition();
+
+            &:hover {
+              background-color: rgb(241, 241, 243);
+            }
+
+            span {
+              text-align: center;
+
+              &:first-child {
+                text-align: left;
+
+                .coin_text {
+                  ms('max-width', 70px 60px 60px 70px 110px 115px);
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

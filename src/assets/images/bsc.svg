@@ -1,0 +1,21 @@
+<svg version="1.2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 462 462" width="462" height="462">
+	<title>bsc-svg</title>
+	<style>
+		.s0 { fill: #f3ba2f } 
+		.s1 { fill: #131415 } 
+	</style>
+	<g id="Light">
+		<g id="OneArt-_x2022_-Desktop-_x2022_-Light">
+			<g id="Block">
+				<g id="TVL">
+					<g id="Icons_x2F_Icon-24_x2F_cake">
+						<path id="Oval" class="s0" d="m231.8 461.3c-127.6 0-230.7-103.1-230.7-230.7 0-127.6 103.1-230.7 230.7-230.7 127.6 0 230.7 103.1 230.7 230.7 0 127.6-103.1 230.7-230.7 230.7z"/>
+						<g id="Icons_x2F_icon-24_x2F_networks_x2F_binance_x5F_smart_x5F_chain">
+							<path id="Combined-Shape" fill-rule="evenodd" class="s1" d="m291.6 255.1l34.8 34.7-94.6 94.5-94.5-94.5 34.8-34.7 59.7 59.7zm-59.8-59.8l35.3 35.3-35.3 35.3-35.2-35.2v-0.1l9.2-9.2zm-119 0.5l34.8 34.8-34.8 34.7-34.8-34.8zm238 0l34.8 34.8-34.8 34.7-34.8-34.8zm-119-119l94.5 94.5-34.8 34.8-59.7-59.8-59.7 59.7-34.8-34.7z"/>
+						</g>
+					</g>
+				</g>
+			</g>
+		</g>
+	</g>
+</svg>

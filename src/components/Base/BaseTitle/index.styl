@@ -1,0 +1,50 @@
+.base_components_title_layout {
+  position: relative;
+
+  &.center {
+    .base_components_title {
+      justify-content: center;
+
+      h2 {
+        left: 50%;
+        transform: translate3d(-50%, -50%, 0);
+      }
+    }
+
+    .base_components_text {
+      text-align: center;
+    }
+  }
+
+  .base_components_title {
+    position: relative;
+    display: flex;
+    align-items: center;
+
+    h2 {
+      position: absolute;
+      top: 50%;
+      left: 0;
+      ms('font-size', 22px 24px 28px 32px 36px 40px);
+      font-family: 'Source Han Sans CN Regular';
+      font-weight: bold;
+      color: #1A1210;
+      transform: translate3d(0, -50%, 0);
+    }
+
+    img {
+      ms('width', 115px 135px 155px 175px 215px 215px);
+      ms('height', 85px 99px 114px 129px 159px 159px);
+      display: block;
+    }
+  }
+
+  .base_components_text {
+    ms('margin-top', 10px 12px 14px 16px 18px 21px);
+    ms('font-size', 12px 13px 14px 15px 16px 16px);
+    font-family: 'Source Han Sans CN Regular';
+    font-weight: 400;
+    line-height: 1.6;
+    color: #6E6E6E;
+  }
+}
