@@ -53,6 +53,9 @@ const transform: AxiosTransform = {
       if ((res as any).message && (res as any).message.create_time) {
         return res;
       }
+      if ((res as any).message && (res as any).totalIndex) {
+        return res;
+      }
       return (res as any).message;
     }
     if ((res as any).image && (res as any).attributes) {

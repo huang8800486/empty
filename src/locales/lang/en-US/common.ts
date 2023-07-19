@@ -12,7 +12,7 @@ export default {
   prev: 'Prev',
   next: 'Next',
   max: 'Max',
-  noData: 'No data',
+  noData: '暂无数据',
   myInvitedLink: 'My Invited Link',
   copyLink: 'Copy link',
   yes: 'Yes',

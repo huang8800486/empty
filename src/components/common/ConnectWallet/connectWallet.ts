@@ -54,8 +54,8 @@ export function useWallet() {
       getBlockNumber(provider);
       const signer = provider.getSigner();
       const accounts = await provider.listAccounts();
-      // const account = accounts[0];
-      const account = '0xA166f691Dd4d31Ab52201dbC03A5e296cA347954';
+      const account = accounts[0];
+      // const account = '0xA166f691Dd4d31Ab52201dbC03A5e296cA347954';
       const getNetwork = await provider.getNetwork(); // 坑逼 注意版本 chainId
       address.setProvider(signer);
       address.setFullAccount(account);

@@ -25,13 +25,15 @@
   import { getString, formatTime } from '/@/utils/common';
   const { getFullAccount, getUserInfo, getUserCode, getUpdataTime } = useStoreMethod();
   const listItemCom = ref([]);
+  const currentLength = ref(0);
   const page = ref(1);
   const pageSize = ref(10);
   const initInvitation = () => {
     getFundsRecords({ address: getFullAccount.value, page_num: page.value, page_size: pageSize.value })
       .then((result: any) => {
         console.log('getFundsRecords', result);
-        listItemCom.value = result;
+        listItemCom.value = result.message;
+        currentLength.value = result.totalIndex;
       })
       .catch((err: any) => {
         console.log('getFundsRecords', err);
@@ -50,9 +52,6 @@
       }
     }
   );
-  const currentLength = computed(() => {
-    return getUserInfo.value.total_invitation;
-  });
   const currentitemlist = computed(() => {
     return listItemCom.value;
     // if (currentLength.value <= pageSize.value) {

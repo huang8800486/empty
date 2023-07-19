@@ -51,7 +51,7 @@
       { name: 'assetsRecord', text: '资产' },
       { name: 'nodeIncomeRecord', text: '节点收益' },
       { name: 'teamRecord', text: '团队收益' },
-      { name: 'algebraRecord', text: '代数' },
+      // { name: 'algebraRecord', text: '代数' },
       { name: 'directRecord', text: '直推收益' },
       { name: 'myDirectRecord', text: '我的直推' },
     ];
@@ -63,7 +63,7 @@
     assetsRecord: assetsRecord,
     nodeIncomeRecord: nodeIncomeRecord,
     teamRecord: teamRecord,
-    algebraRecord: algebraRecord,
+    // algebraRecord: algebraRecord,
     directRecord: directRecord,
     myDirectRecord: myDirectRecord,
   };
