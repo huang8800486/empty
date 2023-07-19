@@ -27,7 +27,7 @@
 
     span {
       ms('font-size', 12px 12px 13px 13px 14px 14px);
-       font-family: 'Source Han Sans CN-Regular';
+      font-family: 'Source Han Sans CN-Regular';
       font-weight: 400;
       color: #1A1210;
       text-align: center;
@@ -55,6 +55,7 @@
       align-items: center;
       justify-content: space-between;
       ms('margin-bottom', 7px 8px 9px 10px 11px 12px);
+      ms('height', 24px 26px 28px 30px 32px 32px);
 
       .coin {
         display: flex;
@@ -63,6 +64,7 @@
         font-family: 'Poppins-Medium';
         font-weight: 500;
         color: #1A1210;
+        text-transform: uppercase;
 
         img {
           ms('width', 20px 22px 24px 26px 28px 28px);
@@ -76,7 +78,7 @@
 
       span {
         ms('font-size', 12px 12px 13px 13px 14px 14px);
-         font-family: 'Source Han Sans CN-Regular';
+        font-family: 'Source Han Sans CN-Regular';
         font-weight: 400;
         color: #1A1210;
       }
@@ -89,15 +91,21 @@
     .detail_switch {
       width: 100%;
       position: relative;
+      display: block;
       // ms('padding-top', 8px 9px 10px 11px 12px 13px);
       ms('padding-bottom', 15px 16px 17px 18px 18px 19px);
       padding-top: 13px;
 
       // padding-bottom: 19px;
-      img {
+      a {
         margin: 0 auto;
         display: block;
         ms('width', 29px 34px 39px 44px 49px 49px);
+
+        img {
+          width: 100%;
+          display: block;
+        }
       }
     }
 

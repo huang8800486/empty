@@ -54,10 +54,11 @@
     return getUserInfo.value.total_invitation;
   });
   const currentitemlist = computed(() => {
-    if (currentLength.value <= pageSize.value) {
-      return listItemCom.value;
-    }
-    return listItemCom.value.slice((page.value - 1) * pageSize.value, page.value * pageSize.value);
+    return listItemCom.value;
+    // if (currentLength.value <= pageSize.value) {
+    //   return listItemCom.value;
+    // }
+    // return listItemCom.value.slice((page.value - 1) * pageSize.value, page.value * pageSize.value);
   });
   const detailPagechange = (num: number) => {
     page.value = num;

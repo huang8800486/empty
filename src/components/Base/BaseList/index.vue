@@ -77,6 +77,9 @@
     return props.listItem.length;
   });
   const currentitemlist = computed(() => {
+    if (!props.isShowPage) {
+      return props.listItem;
+    }
     if (currentLength.value <= pageSize.value) {
       return props.listItem;
     }

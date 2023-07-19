@@ -16,7 +16,7 @@
         </div>
         <div class="coin_list_content">
           <div class="coin_list_con" v-for="(item, index) in coinNav" :key="index" v-show="currentIndex === index">
-            <template v-if="coinList[item].length > 0">
+            <template v-if="Object.keys(coinList[item]).length > 0">
               <div class="coin_list_si" v-for="(e, i) in coinList[item]" :key="i">
                 <CoinItem :coinItemList="e" />
               </div>

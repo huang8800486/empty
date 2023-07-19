@@ -68,3 +68,23 @@ export function getFundsRecords(data: any) {
     data,
   });
 }
+// 交易
+export function setSwap(data: any) {
+  return defHttp.post<void>({
+    url: `/api/swap`,
+    data,
+  });
+}
+// 投资理财
+export function getProduct() {
+  return defHttp.post<void>({
+    url: `/api/getProduct`,
+  });
+}
+// 投资理财
+export function getOrder(data: any) {
+  return defHttp.post<void>({
+    url: `/api/getOrder`,
+    data,
+  });
+}

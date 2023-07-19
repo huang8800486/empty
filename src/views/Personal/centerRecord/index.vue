@@ -33,7 +33,19 @@
   import algebraRecord from './algebraRecord/algebraRecord.vue';
   import directRecord from './directRecord/directRecord.vue';
   import myDirectRecord from './myDirectRecord/myDirectRecord.vue';
+  const route = useRoute();
+
   const currentIndex = ref(0);
+  watch(
+    () => route,
+    (newValue) => {
+      console.log('route', newValue.query);
+      if (newValue.query && newValue.query.type) {
+        currentIndex.value = +newValue.query.type;
+      }
+    },
+    { immediate: true, deep: true }
+  );
   const recordNav = computed(() => {
     return [
       { name: 'assetsRecord', text: '资产' },

@@ -8,7 +8,8 @@
         <div class="nav_pop_list htmlScroll">
           <div exact class="nav_item" v-for="(item, index) in navList" :key="index">
             <div class="top_list" @click="closeShow">
-              <router-link class="nav" :to="item.path" v-if="item.isOpen">{{ item.text }}</router-link>
+              <a href="javascript:;" v-scroll-to="item.path" class="nav" v-if="item.isScroll">{{ item.text }}</a>
+              <router-link class="nav" :to="item.path" v-else-if="item.isOpen">{{ item.text }}</router-link>
               <a class="nav" href="javascript:;" @click="waitFun" v-else>{{ item.text }}</a>
             </div>
           </div>

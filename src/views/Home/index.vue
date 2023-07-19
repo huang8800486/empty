@@ -23,7 +23,7 @@
           <detailMessage />
         </div>
       </div> -->
-      <div class="wrap">
+      <div class="wrap" id="buyNode">
         <div class="home_intro">
           <div class="buy_box">
             <div class="buy_title">
