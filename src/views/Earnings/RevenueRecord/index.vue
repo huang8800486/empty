@@ -2,11 +2,11 @@
   <div class="earning_content">
     <div class="wrap">
       <div class="earning_revenue_record">
-        <BaseList :titleList="['时间', '质押池', '货币', '数量']" :isFlex="true" :custom="true" v-slot="scope" :listItem="currentitemlist">
-          <span>{{ scope.item.time }}</span>
-          <span>{{ scope.item.number }}</span>
+        <BaseList :titleList="['质押池', '货币', '数量', '时间']" :isFlex="true" :custom="true" v-slot="scope" :listItem="currentitemlist">
           <span>{{ scope.item.type }}</span>
-          <span>{{ scope.item.fee }}</span>
+          <span>{{ scope.item.symbol }}</span>
+          <span>{{ scope.item.amount }}</span>
+          <span>{{ formatTime(scope.item.time) }}</span>
         </BaseList>
       </div>
       <div class="record_pagation">
@@ -24,74 +24,48 @@
 </template>
 
 <script setup lang="ts" name="">
-  interface Props {
-    listItem?: any[];
-  }
-  const props = withDefaults(defineProps<Props>(), {
-    listItem: () => [],
-  });
-  const listItemCom = computed(() => {
-    return [
-      {
-        name: 'WT',
-        number: '100000',
-        type: '转出',
-        fee: '200000',
-        time: '2023.06.23 16:00:00',
-        status: '转出成功',
-      },
-      {
-        name: 'WT',
-        number: '100000',
-        type: '转出',
-        fee: '200000',
-        time: '2023.06.23 16:00:00',
-        status: '转出成功',
-      },
-      {
-        name: 'WT',
-        number: '100000',
-        type: '转出',
-        fee: '200000',
-        time: '2023.06.23 16:00:00',
-        status: '转出成功',
-      },
-      {
-        name: 'WT',
-        number: '100000',
-        type: '转出',
-        fee: '200000',
-        time: '2023.06.23 16:00:00',
-        status: '转出成功',
-      },
-      {
-        name: 'WT',
-        number: '100000',
-        type: '转出',
-        fee: '200000',
-        time: '2023.06.23 16:00:00',
-        status: '转出成功',
-      },
-      {
-        name: 'WT',
-        number: '100000',
-        type: '转出',
-        fee: '200000',
-        time: '2023.06.23 16:00:00',
-        status: '转出成功',
-      },
-    ];
-  });
+  import { getDepositIncome } from '/@/services';
+  import { usePublicMethod, useStoreMethod } from '/@/utils/publicMethod';
+  import { getString, formatTime } from '/@/utils/common';
+  const { getFullAccount, getUserInfo, getUserCode, getUpdataTime } = useStoreMethod();
+  const listItemCom = ref([]);
+  const currentLength = ref(0);
   const page = ref(1);
-  const pageSize = ref(5);
-  const currentLength = computed(() => {
-    return listItemCom.value.length;
-  });
-  const currentitemlist = computed(() => {
-    if (currentLength.value <= pageSize.value) {
-      return listItemCom.value;
+  const pageSize = ref(10);
+  const initInvitation = () => {
+    getDepositIncome({ address: getFullAccount.value, page_num: page.value, page_size: pageSize.value })
+      .then((result: any) => {
+        console.log('getDepositIncome', result);
+        listItemCom.value = result.message;
+        currentLength.value = result.totalIndex;
+      })
+      .catch((err: any) => {
+        console.log('getDepositIncome', err);
+      });
+  };
+
+  watchEffect(() => {
+    if (getUserCode.value > -1) {
+      initInvitation();
+      setInterval(() => {
+        initInvitation();
+      }, 30 * 1000);
     }
-    return listItemCom.value.slice((page.value - 1) * pageSize.value, page.value * pageSize.value);
+  });
+  watch(
+    () => getUpdataTime.value,
+    (newValue) => {
+      if (newValue) {
+        initInvitation();
+      }
+    }
+  );
+  const currentitemlist = computed(() => {
+    return listItemCom.value;
+    // if (currentLength.value <= pageSize.value) {
+    //   return listItemCom.value;
+    // }
+    // return listItemCom.value.slice((page.value - 1) * pageSize.value, page.value * pageSize.value);
   });
   const detailPagechange = (num: number) => {
     page.value = num;

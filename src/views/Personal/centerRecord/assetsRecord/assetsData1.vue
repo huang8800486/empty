@@ -1,16 +1,10 @@
 <template>
   <div class="record_detail">
-    <BaseList
-      :titleList="['货币', '可用', '冻结中', '收益', '总量', '操作']"
-      :isFlex="true"
-      :custom="true"
-      v-slot="scope"
-      :listItem="listItemCom"
-    >
+    <BaseList :titleList="['货币', '可用', '冻结中', '总量', '操作']" :isFlex="true" :custom="true" v-slot="scope" :listItem="listItemCom">
       <span>{{ scope.item.name }}</span>
       <span>{{ scope.item.balance }}</span>
       <span>{{ scope.item.freeze }}</span>
-      <span>{{ scope.item.profit }}</span>
+      <!-- <span>{{ scope.item.profit }}</span> -->
       <span>{{ scope.item.allbalance }}</span>
       <span>
         <div class="operate" v-if="scope.item.isApprove">

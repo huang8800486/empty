@@ -16,8 +16,8 @@
         </div>
         <div class="coin_list_content">
           <div class="coin_list_con" v-for="(item, index) in coinNav" :key="index" v-show="currentIndex === index">
-            <template v-if="Object.keys(coinList[item]).length > 0">
-              <div class="coin_list_si" v-for="(e, i) in coinList[item]" :key="i">
+            <template v-if="Object.keys(getCoinList[item]).length > 0">
+              <div class="coin_list_si" v-for="(e, i) in getCoinList[item]" :key="i">
                 <CoinItem :coinItemList="e" />
               </div>
             </template>
@@ -33,7 +33,8 @@
 
 <script setup lang="ts" name="">
   import CoinItem from './coinItem/index.vue';
-  import { coinListManage } from './config';
+  import { useStoreMethod } from '/@/utils/publicMethod';
+  const { getCoinList } = useStoreMethod();
   const currentIndex = ref<number>(0);
   const coinNav = computed(() => {
     return ['USDT', 'WT'];
@@ -44,5 +45,4 @@
     }
     currentIndex.value = index;
   };
-  const { coinList } = coinListManage();
 </script>

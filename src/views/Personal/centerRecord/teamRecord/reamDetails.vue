@@ -1,18 +1,18 @@
 <template>
   <div class="record_detail">
     <BaseList
-      :titleList="['货币2', '用户地址', '数量', '日收益', '直推奖励系数', '时间']"
+      :titleList="['地址', '产品', '货币', '金额', '开始时间', '结束时间']"
       :isFlex="true"
       :custom="true"
       v-slot="scope"
       :listItem="currentitemlist"
     >
-      <span>{{ scope.item.name }}</span>
-      <span>{{ scope.item.number }}</span>
-      <span>{{ scope.item.fee }}</span>
-      <span>{{ scope.item.number }}</span>
-      <span>{{ scope.item.number }}</span>
-      <span>{{ scope.item.time }}</span>
+      <span>{{ getString(scope.item.address, 4, 4) }}</span>
+      <span>{{ scope.item.product_name }}</span>
+      <span>{{ scope.item.coin_symbol }}</span>
+      <span>{{ scope.item.order_price }}</span>
+      <span>{{ formatTime(scope.item.start_time) }}</span>
+      <span>{{ formatTime(scope.item.end_time) }}</span>
     </BaseList>
   </div>
   <div class="record_pagation">
@@ -28,74 +28,55 @@
 </template>
 
 <script setup lang="ts" name="">
-  interface Props {
-    listItem?: any[];
-  }
-  const props = withDefaults(defineProps<Props>(), {
-    listItem: () => [],
-  });
-  const listItemCom = computed(() => {
-    return [
-      {
-        name: 'WT',
-        number: '100000',
-        type: '转出',
-        fee: '200000',
-        time: '2023.06.23 16:00:00',
-        status: '转出成功',
-      },
-      {
-        name: 'WT',
-        number: '100000',
-        type: '转出',
-        fee: '200000',
-        time: '2023.06.23 16:00:00',
-        status: '转出成功',
-      },
-      {
-        name: 'WT',
-        number: '100000',
-        type: '转出',
-        fee: '200000',
-        time: '2023.06.23 16:00:00',
-        status: '转出成功',
-      },
-      {
-        name: 'WT',
-        number: '100000',
-        type: '转出',
-        fee: '200000',
-        time: '2023.06.23 16:00:00',
-        status: '转出成功',
-      },
-      {
-        name: 'WT',
-        number: '100000',
-        type: '转出',
-        fee: '200000',
-        time: '2023.06.23 16:00:00',
-        status: '转出成功',
-      },
-      {
-        name: 'WT',
-        number: '100000',
-        type: '转出',
-        fee: '200000',
-        time: '2023.06.23 16:00:00',
-        status: '转出成功',
-      },
-    ];
-  });
+  import { getTeamInfo } from '/@/services';
+  import { usePublicMethod, useStoreMethod } from '/@/utils/publicMethod';
+  import { getString, formatTime } from '/@/utils/common';
+  const { getFullAccount, getUserInfo, getUserCode, getUpdataTime } = useStoreMethod();
+  const listItemCom = ref([]);
+  const currentLength = ref(0);
   const page = ref(1);
-  const pageSize = ref(5);
-  const currentLength = computed(() => {
-    return listItemCom.value.length;
+  const pageSize = ref(10);
+  const peosonObj = ref({
+    totalPeople: 0,
+    level: 0,
   });
-  const currentitemlist = computed(() => {
-    if (currentLength.value <= pageSize.value) {
-      return listItemCom.value;
+  const initInvitation = () => {
+    getTeamInfo({ address: getFullAccount.value, page_num: page.value, page_size: pageSize.value })
+      .then((result: any) => {
+        console.log('getTeamInfo', result);
+        listItemCom.value = result.message;
+        currentLength.value = result.totalIndex;
+        peosonObj.value.totalPeople = result.totalPeople;
+        peosonObj.value.level = result.level;
+      })
+      .catch((err: any) => {
+        console.log('getTeamInfo', err);
+      });
+  };
+
+  defineExpose({ peosonObj }); // 使用 defineExpose()方法 暴露出去
+  watchEffect(() => {
+    if (getUserCode.value > -1) {
+      initInvitation();
+      setInterval(() => {
+        initInvitation();
+      }, 30 * 1000);
     }
-    return listItemCom.value.slice((page.value - 1) * pageSize.value, page.value * pageSize.value);
+  });
+  watch(
+    () => getUpdataTime.value,
+    (newValue) => {
+      if (newValue) {
+        initInvitation();
+      }
+    }
+  );
+  const currentitemlist = computed(() => {
+    return listItemCom.value;
+    // if (currentLength.value <= pageSize.value) {
+    //   return listItemCom.value;
+    // }
+    // return listItemCom.value.slice((page.value - 1) * pageSize.value, page.value * pageSize.value);
   });
   const detailPagechange = (num: number) => {
     page.value = num;

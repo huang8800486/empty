@@ -15,4 +15,7 @@
 
 <script setup lang="ts" name="">
   import Enav from './components/Enav.vue';
+
+  import { coinListManage } from './config';
+  coinListManage();
 </script>

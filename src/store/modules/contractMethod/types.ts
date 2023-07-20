@@ -18,6 +18,8 @@ export interface userInfoType {
   update_time: string;
 }
 export interface ContratStateType {
+  coinList: any;
+  originList: any;
   ledgerInstance: any;
   usdtInstance: any;
   wtInstance: any;

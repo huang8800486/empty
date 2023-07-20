@@ -41,6 +41,10 @@
               Toast.error(err.message, {
                 timeout: 2000,
               });
+            } else {
+              Toast.success(t('common.fail'), {
+                timeout: 2000,
+              });
             }
           });
       })
@@ -50,6 +54,10 @@
         Toast.clear();
         if (err.message) {
           Toast.error(err.message, {
+            timeout: 2000,
+          });
+        } else {
+          Toast.success(t('common.fail'), {
             timeout: 2000,
           });
         }

@@ -35,7 +35,7 @@ export const main: Token = {
   chainName: 'BSC-MianNet',
   rpcUrl: 'https://bsc-dataseed.binance.org/',
   blockExplorerUrls: 'https://bscscan.com',
-  ledgerToken: '0x712C46489BDa7Bb85694cbaF6Bda3c4A12621501',
+  ledgerToken: '0x1ff035F19715d79CbAb771E5E7aaA42A8E058ED0',
   USDTToken: '0x55d398326f99059fF775485246999027B3197955',
   WTToken: '0xD077e3E12D73A97c5608DCCAFB4F907Edae82867',
   DEFAULTREFERRERADDRESS: '0xd8d2F757107d69F3f0E0cCf38CF2feD10604b108',

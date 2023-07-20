@@ -88,3 +88,66 @@ export function getOrder(data: any) {
     data,
   });
 }
+// 认购
+export function getDepositUSDT(data: any) {
+  return defHttp.post<void>({
+    url: `/api/depositUSDT`,
+    data,
+  });
+}
+// 认购
+export function getDepositWT(data: any) {
+  return defHttp.post<void>({
+    url: `/api/depositWT`,
+    data,
+  });
+}
+// 燃烧
+export function setBurnWT(data: any) {
+  return defHttp.post<void>({
+    url: `/api/burnWT`,
+    data,
+  });
+}
+// 赎回
+export function setRedemption(data: any) {
+  return defHttp.post<void>({
+    url: `/api/redemption`,
+    data,
+  });
+}
+// 团队
+export function getTeamIncome(data: any) {
+  return defHttp.post<void>({
+    url: `/api/getTeamIncome`,
+    data,
+  });
+}
+// 团队
+export function getNodeIncome(data: any) {
+  return defHttp.post<void>({
+    url: `/api/getNodeIncome`,
+    data,
+  });
+}
+// 团队
+export function getDirectIncome(data: any) {
+  return defHttp.post<void>({
+    url: `/api/getDirectIncome`,
+    data,
+  });
+}
+// 团队
+export function getTeamInfo(data: any) {
+  return defHttp.post<void>({
+    url: `/api/getTeamInfo`,
+    data,
+  });
+}
+// 团队
+export function getDepositIncome(data: any) {
+  return defHttp.post<void>({
+    url: `/api/getDepositIncome`,
+    data,
+  });
+}

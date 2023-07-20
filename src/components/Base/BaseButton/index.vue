@@ -37,7 +37,6 @@
     () => getIsButtonLoading.value,
     (newValue) => {
       // currentFlag.value = false;
-      console.log('newbtnId.value', newbtnId.value);
       if (newValue && props.btnId) {
         newbtnId.value = '';
       }
@@ -49,15 +48,11 @@
     (e: string, value?: string | number): void;
   }>();
   const isClickLoading = computed(() => {
-    console.log('newbtnId', newbtnId.value);
-    console.log('props', props.btnId);
     return props.btnId && newbtnId.value === props.btnId;
   });
   const callback = () => {
     if (props.disabled) return;
     if (props.btnId) {
-      console.log('newbtnId', newbtnId.value);
-      console.log('props', props.btnId);
       if (newbtnId.value === props.btnId) return;
       newbtnId.value = props.btnId;
     }

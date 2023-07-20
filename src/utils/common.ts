@@ -55,10 +55,10 @@ export function scientific(value: string) {
   }
   return value;
 }
-export const fixD = (num: number | string, precision: number) => {
+export const fixD = (num: number | string, precision: number, type?: boolean) => {
   // 不存时返回'--', 不检查对象
   if (typeof num === 'undefined' || num === null || num === '') {
-    return '--';
+    return type ? '0.00' : '--';
   }
   // num初始化
   const newnum = num + '';
@@ -66,7 +66,7 @@ export const fixD = (num: number | string, precision: number) => {
   // 不是数字时
   const reg = /^[0-9]+.?[0-9]*$/;
   if (!reg.test(newnum)) {
-    return '--';
+    return type ? '0.00' : '--';
   }
 
   // 数字为0时

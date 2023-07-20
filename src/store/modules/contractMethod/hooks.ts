@@ -20,6 +20,8 @@ export function useContract() {
   const getWtInstance = computed(() => contract.wtInstance);
   const getIsUsdtApprove = computed(() => contract.isUsdtApprove);
   const getIsWtApprove = computed(() => contract.isWtApprove);
+  const getCoinList = computed(() => contract.coinList);
+  const getOriginList = computed(() => contract.originList);
   return {
     contract,
     getUserInfo,
@@ -32,5 +34,7 @@ export function useContract() {
     getIsWtApprove,
     getUsdtInstance,
     getWtInstance,
+    getCoinList,
+    getOriginList,
   };
 }

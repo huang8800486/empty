@@ -9,6 +9,11 @@ export const initState: ContratStateType = {
   WTToken: '',
   isUsdtApprove: false,
   isWtApprove: false,
+  coinList: {
+    USDT: {},
+    WT: {},
+  },
+  originList: [],
   userInfo: {
     id: 0,
     address: '',

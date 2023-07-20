@@ -6,6 +6,7 @@ import { useGetters } from './hooks';
 import { formatUnits, formatDigit, toString, getContractMethod } from '/@/utils/formatEth';
 import { fixD, getString, base64ToJs } from '/@/utils/common';
 import { useStoreMethod } from '/@/utils/publicMethod';
+import { getProduct, getOrder } from '/@/services';
 
 export const useContractStore = defineStore({
   id: 'app-contractMethod',
@@ -69,6 +70,97 @@ export const useContractStore = defineStore({
         console.log('isWtApprove-失败APPROVE-', false);
         this.isWtApprove = false;
       }
+    },
+    async intProductOrder(fullAccount: Partial<string>) {
+      const productIds: any = [];
+      getProduct()
+        .then((result: any) => {
+          if (result && result.length) {
+            for (let i = 0; i < result.length; i++) {
+              const item = result[i];
+              productIds.push(item.id);
+
+              const obj = {
+                balance: '0',
+                deposited: '0',
+                redeemable: '0',
+                income: '',
+                children: [
+                  {
+                    name: 'subscribe',
+                    value: '',
+                    placeholder: '请输入质押数量',
+                    text: '认购',
+                    disabled: true,
+                  },
+                  {
+                    name: 'redemption',
+                    value: '',
+                    placeholder: '0',
+                    text: '赎回',
+                    disabled: true,
+                  },
+                  {
+                    name: 'burning',
+                    value: '',
+                    placeholder: '请输入燃烧数量',
+                    text: '燃烧WT',
+                    disabled: false,
+                  },
+                ],
+                ...item,
+                status: 0,
+                orderList: [],
+              };
+              this.coinList[item.coin_symbol][item.id] = obj;
+            }
+          }
+          console.log('this.coinList', this.coinList);
+          if (productIds.length > 0) {
+            getOrder({ address: fullAccount, product_ids: productIds })
+              .then((res: any) => {
+                console.log('getOrder', res, res.length);
+                if (res && res.length) {
+                  for (let j = 0; j < res.length; j++) {
+                    const items = res[j];
+                    const origin = this.coinList[items.coin_symbol][items.product_id];
+                    // if (items.)
+                    origin.status = items.status;
+                    origin.orderList = items;
+                    origin.income = items.income;
+                    origin.balance = items.prepayments_price;
+                    origin.deposited = +items.order_price + +items.income;
+                    origin.redeemable = items.order_price;
+                    origin.children[1].value = origin.redeemable;
+                    if (origin.status === 0) {
+                      origin.children[0].disabled = true;
+                      origin.children[1].disabled = true;
+                      origin.children[2].disabled = false;
+                    } else if (origin.status === 1) {
+                      origin.children[0].disabled = false;
+                      origin.children[1].disabled = true;
+                      origin.children[2].disabled = true;
+                    } else if (origin.status === 2) {
+                      origin.children[0].disabled = true;
+                      origin.children[1].disabled = true;
+                      origin.children[2].disabled = true;
+                    } else if (origin.status === 3) {
+                      origin.children[0].disabled = true;
+                      origin.children[1].disabled = false;
+                      origin.children[2].disabled = true;
+                    }
+                    this.originList.push(origin);
+                  }
+                }
+              })
+              .catch((err) => {
+                console.log('getOrder', err);
+              });
+          }
+        })
+        .catch((err) => {
+          console.log('getProduct', err);
+        });
     },
   },
 });

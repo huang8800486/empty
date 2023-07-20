@@ -42,6 +42,9 @@
   watchEffect(() => {
     if (getUserCode.value > -1) {
       initInvitation();
+      setInterval(() => {
+        initInvitation();
+      }, 30 * 1000);
     }
   });
   watch(

@@ -26,7 +26,8 @@
             </div>
           </div>
           <div class="detail_switch">
-            <a href="javascript:;" @click="switchType"><img src="@/assets/images/switch.png" alt="" /></a>
+            <!-- <a href="javascript:;" @click="switchType"><img src="@/assets/images/switch.png" alt="" /></a> -->
+            <a href="javascript:;"><img src="@/assets/images/switch.png" alt="" /></a>
           </div>
           <div class="detail_box">
             <div class="detail_title">
@@ -64,7 +65,7 @@
   const { options, contract, getFullAccount, getIsButtonLoading, getUserInfo, getProvider } = useStoreMethod();
   const topValue = ref('');
   const bottomValue = ref('');
-  const currentType = ref(0);
+  const currentType = ref(1);
   const switchType = () => {
     currentType.value = currentType.value === 0 ? 1 : 0;
   };
@@ -138,6 +139,10 @@
               Toast.error(err.message, {
                 timeout: 2000,
               });
+            } else {
+              Toast.success(t('common.fail'), {
+                timeout: 2000,
+              });
             }
           });
       })
@@ -147,6 +152,10 @@
         Toast.clear();
         if (err.message) {
           Toast.error(err.message, {
+            timeout: 2000,
+          });
+        } else {
+          Toast.success(t('common.fail'), {
             timeout: 2000,
           });
         }
