@@ -27,7 +27,7 @@
         <div class="coin_first">
           <div class="asset">
             <h3>{{ coinItemList.product_name }}天</h3>
-            <p>余额: {{ coinItemList.balance }}</p>
+            <p>已燃烧: {{ coinItemList.balance }}</p>
             <p>已存入: {{ coinItemList.deposited }}</p>
             <p v-if="coinItemList.status === 3">可赎回的: {{ coinItemList.redeemable }}</p>
           </div>
@@ -37,9 +37,12 @@
             <div class="input_item" v-for="(item, index) in children" :key="index">
               <BaseInput v-model="item.value" :disabled="item.name === 'redemption'" :placeholder="item.placeholder" />
               <a href="javascript:;" class="max" @click="maxFun(item)" :class="{ hide: item.name !== 'subscribe' }">最大</a>
-              <BaseButton :disabled="item.disabled || (!item.value && item.name != 'redemption')" @callback="buyFun(item)">{{
-                item.text
-              }}</BaseButton>
+              <BaseButton
+                :btnId="nanoid()"
+                :disabled="item.disabled || (!item.value && item.name != 'redemption')"
+                @callback="buyFun(item)"
+                >{{ item.text }}</BaseButton
+              >
             </div>
           </div>
         </div>
@@ -55,6 +58,7 @@
 </template>
 
 <script setup lang="ts" name="">
+  import { nanoid } from 'nanoid';
   import { usePublicMethod, useStoreMethod } from '/@/utils/publicMethod';
   import { fixN } from '/@/utils/BigNumber';
   import { getDepositUSDT, getDepositWT, setBurnWT, setRedemption } from '/@/services';

@@ -129,8 +129,8 @@ export const useContractStore = defineStore({
                     origin.orderList = items;
                     origin.income = items.income;
                     origin.balance = items.prepayments_price;
-                    origin.deposited = +items.order_price + +items.income;
-                    origin.redeemable = items.order_price;
+                    origin.deposited = items.order_price;
+                    origin.redeemable = items.order_price + +items.income;
                     origin.children[1].value = origin.redeemable;
                     if (origin.status === 0) {
                       origin.children[0].disabled = true;
