@@ -37,7 +37,6 @@
   const initInvitation = () => {
     setInvitationData({ address: getFullAccount.value, page_num: page.value, page_size: pageSize.value })
       .then((result: any) => {
-        console.log('setInvitationData', result);
         listItemCom.value = result;
       })
       .catch((err: any) => {

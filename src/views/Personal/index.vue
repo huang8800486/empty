@@ -8,8 +8,9 @@
               <img src="@/assets/images/name_coin.png" alt="" />
             </div>
             <div class="name_text">
-              <NodifyName />
-              <span>{{ getCurrentAccount }}</span>
+              <NodifyName v-if="getUserCode === 1" />
+              <span v-if="getUserCode === 1">{{ getCurrentAccount }}</span>
+              <BaseButton v-else @callback="register">注册</BaseButton>
               <!-- <p>UID:12345</p> -->
             </div>
           </div>
@@ -40,7 +41,8 @@
   import copyText from '/@/utils/clipboard';
   import { getWebSite, getString } from '/@/utils/common';
   import centerRecord from './centerRecord/index.vue';
-  const { getCurrentAccount, getScreen, getFullAccount, getUserInfo } = useStoreMethod();
+  import { signerUser } from '/@/utils/sign';
+  const { getCurrentAccount, getScreen, getFullAccount, getUserInfo, getUserCode, getInviteAddress } = useStoreMethod();
   const bigScreen = computed(() => {
     return getScreen.value.index > 1;
   });
@@ -53,4 +55,9 @@
   const invitedCode = computed(() => {
     return getWebSite(getFullAccount.value);
   });
+  const register = () => {
+    if (getFullAccount.value) {
+      signerUser(getFullAccount.value, getInviteAddress.value);
+    }
+  };
 </script>

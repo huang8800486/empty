@@ -35,7 +35,6 @@
   const initInvitation = () => {
     getDepositIncome({ address: getFullAccount.value, page_num: page.value, page_size: pageSize.value })
       .then((result: any) => {
-        console.log('getDepositIncome', result);
         listItemCom.value = result.message;
         currentLength.value = result.totalIndex;
       })

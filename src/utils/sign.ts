@@ -4,6 +4,46 @@ import { useToast } from 'vue-toastification';
 import { useI18n } from '/@/hooks/web/useI18n';
 import { useStoreMethod } from '/@/utils/publicMethod';
 
+export const signerUser = (address: string, invite: string | null) => {
+  const { t } = useI18n();
+  const Toast = useToast();
+  const { contract, getProvider } = useStoreMethod();
+  const signer = toRaw(getProvider.value);
+  signer
+    .signMessage(invite + '')
+    .then((sign: any) => {
+      Toast.clear();
+      const obj = {
+        address: address,
+        signature: sign,
+        data: invite,
+      };
+      setVerifySignature(obj)
+        .then((result: any) => {
+          aesCryptoJs(address, invite);
+          if (result.message) {
+            Toast.success(result.message, {
+              timeout: 2000,
+            });
+          }
+        })
+        .catch((err) => {
+          if (err.message) {
+            Toast.error(err.message, {
+              timeout: 2000,
+            });
+          }
+        });
+    })
+    .catch((err: any) => {
+      if (err.message) {
+        Toast.error(err.message, {
+          timeout: 2000,
+        });
+      }
+      Toast.clear();
+    });
+};
 export const aesCryptoJs = (address: string, invite: string | null) => {
   const { t } = useI18n();
   const Toast = useToast();
@@ -21,40 +61,7 @@ export const aesCryptoJs = (address: string, invite: string | null) => {
       // console.error('getWebGeUserNonce', err);
       if (err.code === -1) {
         Toast.info('请绑定推荐关系');
-        signer
-          .signMessage(invite + '')
-          .then((sign: any) => {
-            Toast.clear();
-            const obj = {
-              address: address,
-              signature: sign,
-              data: invite,
-            };
-            setVerifySignature(obj)
-              .then((result: any) => {
-                aesCryptoJs(address, invite);
-                if (result.message) {
-                  Toast.success(result.message, {
-                    timeout: 2000,
-                  });
-                }
-              })
-              .catch((err) => {
-                if (err.message) {
-                  Toast.error(err.message, {
-                    timeout: 2000,
-                  });
-                }
-              });
-          })
-          .catch((err: any) => {
-            if (err.message) {
-              Toast.error(err.message, {
-                timeout: 2000,
-              });
-            }
-            Toast.clear();
-          });
+        signerUser(address, invite);
       }
     });
 };

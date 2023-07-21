@@ -43,11 +43,12 @@
   const initInvitation = () => {
     getTeamInfo({ address: getFullAccount.value, page_num: page.value, page_size: pageSize.value })
       .then((result: any) => {
-        console.log('getTeamInfo', result);
-        listItemCom.value = result.message;
-        currentLength.value = result.totalIndex;
-        peosonObj.value.totalPeople = result.totalPeople;
-        peosonObj.value.level = result.level;
+        if (result) {
+          listItemCom.value = result.message || [];
+          currentLength.value = result.totalIndex;
+          peosonObj.value.totalPeople = result.totalPeople;
+          peosonObj.value.level = result.level;
+        }
       })
       .catch((err: any) => {
         console.log('getTeamInfo', err);

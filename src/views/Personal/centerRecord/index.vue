@@ -39,7 +39,6 @@
   watch(
     () => route,
     (newValue) => {
-      console.log('route', newValue.query);
       if (newValue.query && newValue.query.type) {
         currentIndex.value = +newValue.query.type;
       }

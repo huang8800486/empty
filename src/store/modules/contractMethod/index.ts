@@ -79,7 +79,6 @@ export const useContractStore = defineStore({
             for (let i = 0; i < result.length; i++) {
               const item = result[i];
               productIds.push(item.id);
-
               const obj = {
                 balance: '0',
                 deposited: '0',
@@ -115,11 +114,12 @@ export const useContractStore = defineStore({
               this.coinList[item.coin_symbol][item.id] = obj;
             }
           }
-          console.log('this.coinList', this.coinList);
           if (productIds.length > 0) {
             getOrder({ address: fullAccount, product_ids: productIds })
               .then((res: any) => {
                 console.log('getOrder', res, res.length);
+                this.originList = [];
+                this.originList.length = 0;
                 if (res && res.length) {
                   for (let j = 0; j < res.length; j++) {
                     const items = res[j];
@@ -155,6 +155,8 @@ export const useContractStore = defineStore({
               })
               .catch((err) => {
                 console.log('getOrder', err);
+                this.originList = [];
+                this.originList.length = 0;
               });
           }
         })

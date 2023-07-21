@@ -35,7 +35,6 @@
   const initInvitation = () => {
     getDirectIncome({ address: getFullAccount.value, page_num: page.value, page_size: pageSize.value })
       .then((result: any) => {
-        console.log('getDirectIncome', result);
         listItemCom.value = result.message;
         currentLength.value = result.totalIndex;
         totalObj.value.totalUSDTIncome = result.totalUSDTIncome;

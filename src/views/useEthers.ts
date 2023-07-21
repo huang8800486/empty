@@ -6,7 +6,7 @@ import { ethers } from 'ethers';
 import ERC20ABI from '/@/contract/ERC20ABI.json';
 import { getContract, getErc20Contract } from '/@/utils/contractHelpers';
 export function useEthers() {
-  const { contract, getUpdataTime, getFullAccount, getInviteAddress } = useStoreMethod();
+  const { contract, getUpdataTime, getFullAccount, getInviteAddress, getUserCode } = useStoreMethod();
   const { getProvider, getLedgerInstance } = useStoreMethod();
 
   watchEffect(() => {
@@ -30,7 +30,9 @@ export function useEthers() {
       }
       if (!timer) {
         timer = setInterval(() => {
-          aesCryptoJs(getFullAccount.value, getInviteAddress.value);
+          if (getUserCode.value > -1) {
+            aesCryptoJs(getFullAccount.value, getInviteAddress.value);
+          }
         }, 10 * 1000);
       }
     }
@@ -58,7 +60,6 @@ export function useEthers() {
     const ledgerInstance = getContract({ abi: ledger, address: tokenObj.ledgerToken, signer: signer });
     contract.SETLEDGERINSTANCE(ledgerInstance);
     contract.SETLEDGERTOKEN(tokenObj.ledgerToken);
-    console.log('usdtInstance', tokenObj.USDTToken);
     const usdtInstance = new ethers.Contract(tokenObj.USDTToken + '', ERC20ABI, signer);
     const wtInstance = new ethers.Contract(tokenObj.WTToken + '', ERC20ABI, signer);
     contract.SETUSDTINSTANCE(usdtInstance);

@@ -35,7 +35,6 @@
   const initInvitation = () => {
     getNodeIncome({ address: getFullAccount.value, page_num: page.value, page_size: pageSize.value })
       .then((result: any) => {
-        console.log('getNodeIncome', result);
         listItemCom.value = result.message;
         currentLength.value = result.totalIndex;
         totalObj.value.totalUSDTIncome = result.totalUSDTIncome;

@@ -1,2 +1,2 @@
-import { prepro } from './token';
-export default prepro;
+import { test } from './token';
+export default test;
