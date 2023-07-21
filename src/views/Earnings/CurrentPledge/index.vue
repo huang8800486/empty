@@ -3,7 +3,7 @@
     <div class="wrap">
       <div class="earning_revenue_record">
         <BaseList
-          :titleList="['质押池', '货币', '数量', '时间']"
+          :titleList="['质押池', '货币', '数量', '时间', '已排单']"
           :isFlex="true"
           :custom="true"
           :isShowPage="true"
@@ -14,6 +14,7 @@
           <span>{{ scope.item.coin_symbol }}</span>
           <span>{{ scope.item.orderList.order_price }}</span>
           <span>{{ formatTime(scope.item.orderList.start_time) }}</span>
+          <span>{{ scope.item.is_open == 1 ? '是' : '否' }}</span>
         </BaseList>
       </div>
     </div>
