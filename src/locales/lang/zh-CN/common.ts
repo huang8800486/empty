@@ -12,7 +12,7 @@ export default {
   prev: '上一个',
   next: '下一个',
   max: '最大限度',
-  noData: '没有数据',
+  noData: '暂无数据',
   myInvitedLink: '我的邀请链接',
   copyLink: '复制链接',
   yes: '是的',

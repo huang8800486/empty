@@ -70,10 +70,10 @@
       // provider对象
       if (window.ethereum) {
         const provider = new ethers.providers.Web3Provider(window.ethereum);
-        address.setProvider(provider);
+        address.setProvider(provider.getSigner());
       } else {
         const provider = new ethers.providers.JsonRpcProvider(tokenObj.rpcUrl as any);
-        address.setProvider(provider);
+        address.setProvider(provider.getSigner());
       }
     }
   });
