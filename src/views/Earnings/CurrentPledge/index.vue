@@ -3,7 +3,7 @@
     <div class="wrap">
       <div class="earning_revenue_record">
         <BaseList
-          :titleList="['质押池', '货币', '数量', '时间', '已排单']"
+          :titleList="['质押池', '货币', '数量', '时间', '排单状态']"
           :isFlex="true"
           :custom="true"
           :isShowPage="true"
@@ -14,7 +14,7 @@
           <span>{{ scope.item.coin_symbol }}</span>
           <span>{{ scope.item.orderList.order_price }}</span>
           <span>{{ formatTime(scope.item.orderList.start_time) }}</span>
-          <span>{{ scope.item.is_open == 1 ? '是' : '否' }}</span>
+          <span>{{ isOpen(scope.item.orderList.is_open) }}</span>
         </BaseList>
       </div>
     </div>
@@ -37,4 +37,15 @@
     }
     return array;
   });
+  const isOpen = (status: any) => {
+    console.log('status', status);
+    if (status == 0) {
+      return '排单中';
+    } else if (status == 1) {
+      return '排单成功';
+    } else if (status == 2) {
+      return '排单失败';
+    }
+    return '';
+  };
 </script>

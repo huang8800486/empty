@@ -26,7 +26,7 @@
       <div class="item_siginle">
         <div class="coin_first">
           <div class="asset">
-            <h3>{{ coinItemList.product_name }}天</h3>
+            <h3>{{ coinItemList.product_name }}</h3>
             <p>已燃烧: {{ coinItemList.balance }}</p>
             <p>已存入: {{ coinItemList.deposited }}</p>
             <p v-if="coinItemList.status === 3">可赎回的: {{ coinItemList.redeemable }}</p>
