@@ -242,7 +242,7 @@ export async function switchNetwork() {
             {
               chainName: tokenObj.chainName,
               chainId: tokenObj.chainId,
-              rpcUrl: tokenObj.rpcUrl,
+              rpcUrls: [tokenObj.rpcUrl],
               blockExplorerUrls: [tokenObj.blockExplorerUrls],
             },
           ],
