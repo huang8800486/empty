@@ -13,6 +13,7 @@
         <div class="other_content">
           <Navigation v-if="getBigScreen" />
           <ConnectWallet />
+          <Lang v-if="getBigScreen" />
         </div>
       </div>
     </div>

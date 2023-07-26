@@ -22,9 +22,9 @@
 </template>
 
 <script setup lang="ts" name="">
+  import { usePublicMethod, useStoreMethod } from '/@/utils/publicMethod';
   const route = useRoute();
   const router = useRouter();
-  import { usePublicMethod, useStoreMethod } from '/@/utils/publicMethod';
   const { Toast, t } = usePublicMethod();
   const navList = computed(() => {
     return [

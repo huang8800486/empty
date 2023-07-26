@@ -35,6 +35,8 @@ declare module 'vue' {
     FooterBottom: typeof import('./../src/components/common/FooterBottom/index.vue')['default']
     GlobalSvg: typeof import('./../src/components/Base/BaseSvg/GlobalSvg.vue')['default']
     HeaderTop: typeof import('./../src/components/common/HeaderTop/index.vue')['default']
+    Lang: typeof import('./../src/components/common/HeaderTop/lang/lang.vue')['default']
+    LangSvg: typeof import('./../src/components/Base/BaseSvg/LangSvg.vue')['default']
     LoadingComponent: typeof import('./../src/components/Base/BaseAsync/LoadingComponent.vue')['default']
     LoadingSvg: typeof import('./../src/components/Base/BaseSvg/LoadingSvg.vue')['default']
     Logo: typeof import('./../src/components/common/HeaderTop/logo.vue')['default']
