@@ -26,8 +26,10 @@
 <script setup lang="ts" name="">
   import assetsData1 from './assetsData1.vue';
   import assetsData2 from './assetsData2.vue';
+  import { usePublicMethod, useStoreMethod } from '/@/utils/publicMethod';
+  const { Toast, t } = usePublicMethod();
   const secondNav = computed(() => {
-    return ['资产', '资金记录'];
+    return [t('common.Assets'), t('common.Assetrecord')];
   });
   const currentIndex = ref(0);
   const switchRecord = (index: number) => {

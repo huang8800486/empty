@@ -2,7 +2,13 @@
   <div class="earning_content">
     <div class="wrap">
       <div class="earning_revenue_record">
-        <BaseList :titleList="['质押池', '货币', '数量', '时间']" :isFlex="true" :custom="true" v-slot="scope" :listItem="currentitemlist">
+        <BaseList
+          :titleList="[$t('common.Stakingpool'), $t('common.Token'), $t('common.quantity'), $t('common.Time')]"
+          :isFlex="true"
+          :custom="true"
+          v-slot="scope"
+          :listItem="currentitemlist"
+        >
           <span>{{ scope.item.type }}</span>
           <span>{{ scope.item.symbol }}</span>
           <span>{{ scope.item.amount }}</span>

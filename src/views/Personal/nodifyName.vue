@@ -2,13 +2,13 @@
   <h2>
     <!-- <BaseInput v-model="getUserInfo.nick_name" /> -->
     <em>{{ getUserInfo.nick_name }}</em>
-    <a href="javascript:;" @click="openModify">修改</a>
+    <a href="javascript:;" @click="openModify">{{ $t('common.Revise') }}</a>
   </h2>
-  <Modal v-model:visible="nickFlag" type="custom" :closeIcon="true" :title="'修改昵称'">
+  <Modal v-model:visible="nickFlag" type="custom" :closeIcon="true" :title="$t('common.Changeusername')">
     <div class="nick_box_wrap">
-      <BaseInput v-model="nickName" :placeholder="'请输入新昵称'" :isNoChian="true" />
+      <BaseInput v-model="nickName" :placeholder="$t('common.Pleaseenternickname')" :isNoChian="true" />
       <!-- <span class="note">*不能输入中文</span> -->
-      <BaseButton @callback="modifyName">确定</BaseButton>
+      <BaseButton @callback="modifyName">{{ $t('common.Sure') }}</BaseButton>
     </div>
   </Modal>
 </template>

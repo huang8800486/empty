@@ -9,7 +9,7 @@
           <div exact class="nav_item" v-for="(item, index) in navList" :key="index">
             <div class="top_list" @click="closeShow">
               <a href="javascript:;" class="nav" v-if="item.isScroll" @click="scrollTo">{{ item.text }}</a>
-              <router-link class="nav" :to="item.path" v-else-if="item.isOpen">{{ item.text }}</router-link>
+              <router-link class="nav" :to="item.path" :class="'nav' + index" v-else-if="item.isOpen">{{ item.text }}</router-link>
               <a class="nav" href="javascript:;" @click="waitFun" v-else>{{ item.text }}</a>
             </div>
           </div>

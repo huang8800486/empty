@@ -1,5 +1,5 @@
 <template>
-  <BaseButton :btnId="nanoid()" @callback="buyNode" :disabled="getUserInfo.is_node == 1">节点认购</BaseButton>
+  <BaseButton :btnId="nanoid()" @callback="buyNode" :disabled="getUserInfo.is_node == 1">{{ $t('common.NodeSubscription') }}</BaseButton>
 </template>
 
 <script setup lang="ts" name="">

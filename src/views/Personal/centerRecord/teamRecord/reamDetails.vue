@@ -1,7 +1,14 @@
 <template>
   <div class="record_detail">
     <BaseList
-      :titleList="['地址', '产品', '货币', '金额', '开始时间', '结束时间']"
+      :titleList="[
+        $t('common.Address'),
+        $t('common.Product'),
+        $t('common.Token'),
+        $t('common.Theamount'),
+        $t('common.Startingtime'),
+        $t('common.EndTime'),
+      ]"
       :isFlex="true"
       :custom="true"
       v-slot="scope"

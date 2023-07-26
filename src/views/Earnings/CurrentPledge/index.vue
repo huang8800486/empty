@@ -3,7 +3,7 @@
     <div class="wrap">
       <div class="earning_revenue_record">
         <BaseList
-          :titleList="['质押池', '货币', '数量', '时间', '排单状态']"
+          :titleList="[$t('common.Stakingpool'), $t('common.Token'), $t('common.quantity'), $t('common.Time'), $t('common.Orderstatus')]"
           :isFlex="true"
           :custom="true"
           :isShowPage="true"
@@ -22,9 +22,10 @@
 </template>
 
 <script setup lang="ts" name="">
-  import { useStoreMethod } from '/@/utils/publicMethod';
+  import { usePublicMethod, useStoreMethod } from '/@/utils/publicMethod';
   import { formatTime } from '/@/utils/common';
   const { getCoinList, getOriginList } = useStoreMethod();
+  const { Toast, t } = usePublicMethod();
 
   const currentitemlist = computed(() => {
     const array: any = [];
@@ -40,11 +41,11 @@
   const isOpen = (status: any) => {
     console.log('status', status);
     if (status == 0) {
-      return '排单中';
+      return t('common.Order_01');
     } else if (status == 1) {
-      return '排单成功';
+      return t('common.Order_02');
     } else if (status == 2) {
-      return '排单失败';
+      return t('common.Order_03');
     }
     return '';
   };

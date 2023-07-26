@@ -33,6 +33,8 @@
   import algebraRecord from './algebraRecord/algebraRecord.vue';
   import directRecord from './directRecord/directRecord.vue';
   import myDirectRecord from './myDirectRecord/myDirectRecord.vue';
+  import { usePublicMethod, useStoreMethod } from '/@/utils/publicMethod';
+  const { t } = usePublicMethod();
   const route = useRoute();
 
   const currentIndex = ref(0);
@@ -47,12 +49,12 @@
   );
   const recordNav = computed(() => {
     return [
-      { name: 'assetsRecord', text: '资产' },
-      { name: 'nodeIncomeRecord', text: '节点收益' },
-      { name: 'teamRecord', text: '团队收益' },
+      { name: 'assetsRecord', text: t('common.Assets') },
+      { name: 'nodeIncomeRecord', text: t('common.Nodeincome') },
+      { name: 'teamRecord', text: t('common.Teambenefits') },
       // { name: 'algebraRecord', text: '代数' },
-      { name: 'directRecord', text: '直推收益' },
-      { name: 'myDirectRecord', text: '我的直推' },
+      { name: 'directRecord', text: t('common.Directrevenue') },
+      { name: 'myDirectRecord', text: t('common.Mydirectpush') },
     ];
   });
   const switchRecord = (index: number) => {

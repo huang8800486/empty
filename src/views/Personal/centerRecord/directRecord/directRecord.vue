@@ -3,11 +3,11 @@
     <!-- <Bsoon /> -->
     <div class="record_detail_wrap recode_inner">
       <div class="text_title">
-        <h3>累计收益</h3>
+        <h3>{{ $t('common.Cumulativeincome') }}</h3>
         <h4>{{ totalObj.totalUSDTIncome }} USDT</h4>
         <h4>{{ totalObj.totalWTIncome }} WT</h4>
         <div class="text_nav_wrap">
-          <a href="javascript:;" class="text_nav on"> 收益记录 </a>
+          <a href="javascript:;" class="text_nav on"> {{ $t('common.Revenuerecord') }} </a>
         </div>
         <!-- <div class="text_secode_nav">
           <a

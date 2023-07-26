@@ -22,7 +22,7 @@
               </div>
             </template>
             <template v-else>
-              <div class="coin_nodata">暂无数据</div>
+              <div class="coin_nodata">{{ $t('common.noData') }}</div>
             </template>
           </div>
         </div>

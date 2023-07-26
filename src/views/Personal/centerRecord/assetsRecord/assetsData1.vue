@@ -1,6 +1,12 @@
 <template>
   <div class="record_detail">
-    <BaseList :titleList="['货币', '可用', '冻结中', '总量', '操作']" :isFlex="true" :custom="true" v-slot="scope" :listItem="listItemCom">
+    <BaseList
+      :titleList="[$t('common.Token'), $t('common.Available'), $t('common.Freezing'), $t('common.Total'), $t('common.Operate')]"
+      :isFlex="true"
+      :custom="true"
+      v-slot="scope"
+      :listItem="listItemCom"
+    >
       <span>{{ scope.item.name }}</span>
       <span>{{ scope.item.balance }}</span>
       <span>{{ scope.item.freeze }}</span>
@@ -8,27 +14,27 @@
       <span>{{ scope.item.allbalance }}</span>
       <span>
         <div class="operate" v-if="scope.item.isApprove">
-          <BaseButton @callback="openRecharge(scope.item.name)">充值</BaseButton>
-          <BaseButton @callback="openWithdraw(scope.item.name)" :disabled="scope.item.balance == 0">提现</BaseButton>
+          <BaseButton @callback="openRecharge(scope.item.name)">{{ $t('common.Recharge') }}</BaseButton>
+          <BaseButton @callback="openWithdraw(scope.item.name)" :disabled="scope.item.balance == 0">{{ $t('common.Withdraw') }}</BaseButton>
         </div>
         <div class="operate" v-else>
-          <BaseButton :btnId="nanoid()" @callback="approve(scope.item.name)">授权</BaseButton>
+          <BaseButton :btnId="nanoid()" @callback="approve(scope.item.name)">{{ $t('common.Authorized') }}</BaseButton>
         </div>
       </span>
     </BaseList>
   </div>
-  <Modal v-model:visible="rechargeFlag" type="custom" :closeIcon="true" :title="'充值'" @colse="closeFun">
+  <Modal v-model:visible="rechargeFlag" type="custom" :closeIcon="true" :title="$t('common.Recharge')" @colse="closeFun">
     <div class="nick_box_wrap">
-      <BaseInput v-model="rechargeValue" :placeholder="'请输入数量'" :isDemi="true" />
+      <BaseInput v-model="rechargeValue" :placeholder="$t('common.Pleaseenterusdt')" :isDemi="true" />
       <!-- <span class="note">*不能输入中文</span> -->
-      <BaseButton :btnId="nanoid()" @callback="comfirmRecharge">确定</BaseButton>
+      <BaseButton :btnId="nanoid()" @callback="comfirmRecharge">{{ $t('common.Sure') }}</BaseButton>
     </div>
   </Modal>
-  <Modal v-model:visible="withdrawFlag" type="custom" :closeIcon="true" :title="'提现'" @colse="closeFun">
+  <Modal v-model:visible="withdrawFlag" type="custom" :closeIcon="true" :title="$t('common.Withdraw')" @colse="closeFun">
     <div class="nick_box_wrap">
-      <BaseInput v-model="withdrawValue" :placeholder="'请输入数量'" :isDemi="true" />
+      <BaseInput v-model="withdrawValue" :placeholder="$t('common.Pleaseenterusdt')" :isDemi="true" />
       <!-- <span class="note">*不能输入中文</span> -->
-      <BaseButton :btnId="nanoid()" @callback="comfirmWithdraw">确定</BaseButton>
+      <BaseButton :btnId="nanoid()" @callback="comfirmWithdraw">{{ $t('common.Sure') }}</BaseButton>
     </div>
   </Modal>
 </template>

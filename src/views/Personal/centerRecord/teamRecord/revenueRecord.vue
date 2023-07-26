@@ -1,6 +1,12 @@
 <template>
   <div class="record_detail">
-    <BaseList :titleList="['货币', '用户地址', '日收益', '时间']" :isFlex="true" :custom="true" v-slot="scope" :listItem="currentitemlist">
+    <BaseList
+      :titleList="[$t('common.Token'), $t('common.Useraddress'), $t('common.Dailyincome'), $t('common.Time')]"
+      :isFlex="true"
+      :custom="true"
+      v-slot="scope"
+      :listItem="currentitemlist"
+    >
       <span>{{ scope.item.type }}</span>
       <span>{{ getString(scope.item.address, 4, 4) }}</span>
       <span>{{ scope.item.amount }} {{ scope.item.symbol }}</span>

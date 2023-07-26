@@ -12,7 +12,7 @@
         @focus="focusValue"
         @blur="focusValue"
       />
-      <a href="javascript:;" class="max" v-if="maxIcon" @click="callback"> 最大 </a>
+      <a href="javascript:;" class="max" v-if="maxIcon" @click="callback"> {{ $t('common.Max') }} </a>
     </div>
   </div>
 </template>

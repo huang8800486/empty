@@ -1,7 +1,13 @@
 <template>
   <div class="record_detail">
     <BaseList
-      :titleList="['昵称', '地址', '伞下最高等级', '团队等级', '理财总价值']"
+      :titleList="[
+        $t('common.Nickname'),
+        $t('common.Address'),
+        $t('common.Highesumbrella'),
+        $t('common.Teamlevel'),
+        $t('common.Totalmanagement'),
+      ]"
       :isFlex="true"
       :custom="true"
       v-slot="scope"

@@ -1,5 +1,5 @@
 // 1.默认语言
-export const DEFAULTLANG = 'zh_CN';
+export const DEFAULTLANG = 'en_US';
 
 // 2.可选择的语言列表
 export type LocaleType = 'zh_CN' | 'en_US' | 'ko_KR' | 'ja_JP' | 'es_ES';

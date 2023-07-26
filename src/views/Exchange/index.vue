@@ -2,8 +2,8 @@
   <div class="exchange_content_wrapper">
     <div class="exchange_content">
       <div class="exchange_title">
-        <h2>兑换</h2>
-        <span>兑换手续费 1%</span>
+        <h2>{{ $t('common.Swap') }}</h2>
+        <span>{{ $t('common.Exchangefee') }}</span>
       </div>
       <div class="wrap">
         <div class="exchange_detail">
@@ -13,12 +13,12 @@
                 <img :src="topCoinImage" alt="" />
                 <p>{{ topCoinTitle }}</p>
               </div>
-              <span>余额: {{ topBalance }}</span>
+              <span>{{ $t('common.Balance') }}: {{ topBalance }}</span>
             </div>
             <div class="detail_input">
               <BaseInput
                 v-model="topValue"
-                :placeholder="`请输入数量$${topCoinTitle}`"
+                :placeholder="`${$t('common.Pleaseenterusdt')}${topCoinTitle}`"
                 :isDemi="true"
                 :maxIcon="true"
                 @callback="maxFun('top')"
@@ -35,12 +35,12 @@
                 <img :src="bottomCoinImage" alt="" />
                 <p>{{ bottomCoinTitle }}</p>
               </div>
-              <span>余额: {{ bottomBalance }}</span>
+              <span>{{ $t('common.Balance') }}: {{ bottomBalance }}</span>
             </div>
             <div class="detail_input">
               <BaseInput
                 v-model="topValue"
-                :placeholder="`请输入数量$${bottomCoinTitle}`"
+                :placeholder="`${$t('common.Pleaseenterusdt')}${bottomCoinTitle}`"
                 :isDemi="true"
                 :maxIcon="true"
                 @callback="maxFun('bottom')"
@@ -48,7 +48,7 @@
             </div>
           </div>
           <div class="detail_button">
-            <BaseButton :btnId="nanoid()" @callback="exchange">兑换</BaseButton>
+            <BaseButton :btnId="nanoid()" @callback="exchange">{{ $t('common.Swap') }}</BaseButton>
           </div>
         </div>
       </div>

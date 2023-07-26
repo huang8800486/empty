@@ -173,6 +173,12 @@
             }
           }
 
+          &.nav4 {
+            &::after {
+              opacity: 0 !important;
+            }
+          }
+
           &::after {
             position: absolute;
             content: '';
@@ -396,6 +402,11 @@
               background: #fff;
               background: linear-gradient(90deg, #DFEBFF 0%, #F2FCFD 100%);
               color: #000;
+
+              &.nav4 {
+                color: #fff;
+                background: none;
+              }
             }
 
             &::after {
@@ -439,6 +450,9 @@
                 // color: #000;
                 // background: $base-active-color;
               }
+            }
+
+            .nav {
             }
           }
 

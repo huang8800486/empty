@@ -3,8 +3,8 @@
     <!-- <Bsoon /> -->
     <div class="record_detail_wrap recode_inner">
       <div class="text_title">
-        <h2>团队等级: {{ peosonObj.level }}</h2>
-        <h3>累计收益</h3>
+        <h2>{{ $t('common.Teamlevel') }}: {{ peosonObj.level }}</h2>
+        <h3>{{ $t('common.Cumulativeincome') }}</h3>
         <h4>{{ totalObj.totalUSDTIncome }} USDT</h4>
         <h4>{{ totalObj.totalWTIncome }} WT</h4>
         <div class="text_nav_wrap">
@@ -20,7 +20,7 @@
           </a>
         </div>
         <h5 v-if="currentIndex === 1"
-          >团队总人数: <span>{{ peosonObj.totalPeople }}</span></h5
+          >{{ $t('common.Totalteamsize') }}: <span>{{ peosonObj.totalPeople }}</span></h5
         >
       </div>
       <div class="item_list" v-show="currentIndex === 0">
@@ -37,8 +37,10 @@
   import revenueRecord from './revenueRecord.vue';
   import reamDetails from './reamDetails.vue';
   import { fixD } from '/@/utils/common';
+  import { usePublicMethod, useStoreMethod } from '/@/utils/publicMethod';
+  const { t } = usePublicMethod();
   const secondNav = computed(() => {
-    return ['收益记录', '团队详情'];
+    return [t('common.Revenuerecord'), t('common.TeamDetails')];
   });
   const currentIndex = ref(0);
   const switchRecord = (index: number) => {

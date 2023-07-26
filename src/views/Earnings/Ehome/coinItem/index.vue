@@ -7,13 +7,13 @@
         </div>
         <div class="coin_second">
           <div class="coin_tex com_tit">
-            <p>货币</p>
+            <p>{{ $t('common.Token') }}</p>
             <span>{{ coinItemList.coin_symbol }}</span>
           </div>
         </div>
         <div class="coin_three">
           <div class="coin_rate com_tit">
-            <p>日利率</p>
+            <p>{{ $t('common.Dailyrate') }}</p>
             <span>{{ coinItemList.return_rate }}%</span>
           </div>
         </div>
@@ -27,16 +27,18 @@
         <div class="coin_first">
           <div class="asset">
             <h3>{{ coinItemList.product_name }}</h3>
-            <p>已燃烧: {{ coinItemList.balance }}</p>
-            <p>已存入: {{ coinItemList.deposited }}</p>
-            <p v-if="coinItemList.status === 3">可赎回的: {{ coinItemList.redeemable }}</p>
+            <p>{{ $t('common.Burnt') }}: {{ coinItemList.balance }}</p>
+            <p>{{ $t('common.Deposited') }}: {{ coinItemList.deposited }}</p>
+            <p v-if="coinItemList.status === 3">{{ $t('common.redeemable') }}: {{ coinItemList.redeemable }}</p>
           </div>
         </div>
         <div class="coin_second">
           <div class="coin_input_content">
             <div class="input_item" v-for="(item, index) in children" :key="index">
               <BaseInput v-model="item.value" :disabled="item.name === 'redemption'" :placeholder="item.placeholder" />
-              <a href="javascript:;" class="max" @click="maxFun(item)" :class="{ hide: item.name !== 'subscribe' }">最大</a>
+              <a href="javascript:;" class="max" @click="maxFun(item)" :class="{ hide: item.name !== 'subscribe' }">{{
+                $t('common.Max')
+              }}</a>
               <BaseButton
                 :btnId="nanoid()"
                 :disabled="item.disabled || (!item.value && item.name != 'redemption')"
@@ -48,7 +50,7 @@
         </div>
         <div class="coin_three">
           <div class="item_text" v-if="coinItemList.status === 2">
-            <p>收益:</p>
+            <p>{{ $t('common.income') }}:</p>
             <span>{{ coinItemList.coin_symbol }} : {{ coinItemList.income }}</span>
           </div>
         </div>

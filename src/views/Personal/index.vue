@@ -10,22 +10,22 @@
             <div class="name_text">
               <NodifyName v-if="getUserCode === 1" />
               <span v-if="getUserCode === 1">{{ getCurrentAccount }}</span>
-              <BaseButton v-else @callback="register">注册</BaseButton>
+              <BaseButton v-else @callback="register">{{ $t('common.register') }}</BaseButton>
               <!-- <p>UID:12345</p> -->
             </div>
           </div>
           <div class="address_box">
             <div class="invite_button">
-              <span>邀请数: {{ getUserInfo.total_invitation }}</span>
+              <span>{{ $t('common.Numberinvites') }}: {{ getUserInfo.total_invitation }}</span>
               <!-- <BaseButton>绑定邀请码</BaseButton> -->
             </div>
             <div class="invite_text" @click="copyText(invitedCode)">
-              <p>邀请链接:</p>
+              <p>{{ $t('common.myInvitedLink') }}:</p>
               <em>{{ invitedText }}</em> <img src="@/assets/images/copy.png" alt="" />
             </div>
 
             <div class="invite_text">
-              是否节点:<em>{{ getUserInfo.is_node == 1 ? '是' : '否' }}</em>
+              {{ $t('common.Whethernode') }}:<em>{{ getUserInfo.is_node == 1 ? $t('common.Yes') : $t('common.No') }}</em>
             </div>
           </div>
         </div>
