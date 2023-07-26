@@ -5,7 +5,7 @@ import { initState } from './reducer';
 import { useGetters } from './hooks';
 import { formatUnits, formatDigit, toString, getContractMethod } from '/@/utils/formatEth';
 import { fixD, getString, base64ToJs } from '/@/utils/common';
-import { useStoreMethod } from '/@/utils/publicMethod';
+import { useStoreMethod, usePublicMethod } from '/@/utils/publicMethod';
 import { getProduct, getOrder } from '/@/services';
 
 export const useContractStore = defineStore({
@@ -72,6 +72,7 @@ export const useContractStore = defineStore({
       }
     },
     async intProductOrder(fullAccount: Partial<string>) {
+      const { t } = usePublicMethod();
       const productIds: any = [];
       getProduct()
         .then((result: any) => {

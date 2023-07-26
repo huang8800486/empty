@@ -4,7 +4,7 @@
       <div class="wrap">
         <div class="titles">
           <img src="@/assets/images/bsc.svg" alt="" />
-          <h2>BSC市场</h2>
+          <h2>{{ $t('common.BSCMarket') }}</h2>
         </div>
         <div class="mark_text_wrap">
           <div class="mark_text" v-for="(item, index) in markText" :key="index">
@@ -26,7 +26,7 @@
             <span>以太坊资产</span>
             <div class="search_input">
               <img src="@/assets/images/search_img.png" alt="" />
-              <BaseInput v-model="searchValue" placeholder="搜索资产名称、代码或地址" />
+              <BaseInput v-model="searchValue" :placeholder="$t('common.serchText')" />
             </div>
           </div>
           <div class="market_list_wrap">
@@ -78,7 +78,7 @@
                       </span>
                       <span>
                         <div class="coin_text">
-                          <a href="javascript:;">等待开放</a>
+                          <a href="javascript:;">{{ $t('common.waitOpen') }}</a>
                         </div>
                       </span>
                     </div>
@@ -96,10 +96,20 @@
 <script setup lang="ts" name="">
   import { getImages } from '/@/utils/common';
   import { markTextManage } from './config';
+  import { usePublicMethod, useStoreMethod } from '/@/utils/publicMethod';
+  const { t } = usePublicMethod();
   const searchValue = ref('');
   const { markText } = markTextManage();
   const titleList = computed(() => {
-    return ['资产', '供应总量', '供应年度', '总借入', '借APY，变量', '借APY，稳定', '操作'];
+    return [
+      t('common.Assets'),
+      t('common.market_title_01'),
+      t('common.market_title_02'),
+      t('common.market_title_03'),
+      t('common.market_title_04'),
+      t('common.market_title_05'),
+      t('common.Operate'),
+    ];
   });
   const currentitemlist = computed(() => {
     return [

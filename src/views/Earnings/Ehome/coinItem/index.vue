@@ -64,6 +64,8 @@
   import { usePublicMethod, useStoreMethod } from '/@/utils/publicMethod';
   import { fixN } from '/@/utils/BigNumber';
   import { getDepositUSDT, getDepositWT, setBurnWT, setRedemption } from '/@/services';
+  import { useLocale } from '/@/locales/useLocale';
+  const { changeLocale, getLocale } = useLocale();
   interface Props {
     coinItemList: any;
   }
@@ -90,7 +92,14 @@
   watchEffect(() => {
     children.value = props.coinItemList.children;
   });
-
+  watchEffect(() => {
+    console.log(getLocale.value);
+    children.value[0].placeholder = t('common.Pleaseamount');
+    children.value[2].placeholder = t('common.Pleaseburning');
+    children.value[0].text = t('common.Subscribe');
+    children.value[1].text = t('common.Redemption');
+    children.value[2].text = t('common.Burningwt');
+  });
   watch(
     () => children.value[0].value,
     (newValue, oldValue) => {
