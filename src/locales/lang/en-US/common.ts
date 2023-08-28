@@ -235,4 +235,5 @@ export default {
   market_title_05: 'Borrow APY, stable',
   serchText: 'Search asset name, code or address',
   waitOpen: 'Waiting to open',
+  
 };

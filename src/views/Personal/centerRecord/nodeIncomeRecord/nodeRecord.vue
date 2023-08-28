@@ -1,7 +1,7 @@
 <template>
   <div class="record_detail">
     <BaseList
-      :titleList="[$t('common.Type'), $t('common.Useraddress'), $t('common.Dailyincome'), $t('common.Time')]"
+      :titleList="[$t('common.type'), $t('common.Useraddress'), $t('common.Dailyincome'), $t('common.Time')]"
       :isFlex="true"
       :custom="true"
       v-slot="scope"
