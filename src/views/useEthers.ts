@@ -17,6 +17,9 @@ export function useEthers() {
     if (getFullAccount.value) {
       contract.initApproveMethod(getFullAccount.value);
     }
+    if (getLedgerInstance.value) {
+      contract.initContractMethod();
+    }
   });
   let timer: null | NodeJS.Timeout = null;
   const flag = ref(true);
@@ -41,9 +44,10 @@ export function useEthers() {
     if (getFullAccount.value) {
       aesCryptoJs(getFullAccount.value, getInviteAddress.value);
     }
-    // if (getFullAccount.value && getLedgerInstance.value) {
-    // if (getFullAccount.value) {
+    // if (getLedgerInstance.value) {
     //   contract.initContractMethod();
+    // }
+    // if (getFullAccount.value) {
     //   contract.initAccountMethod(getFullAccount.value);
     // }
   };

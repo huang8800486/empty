@@ -39,7 +39,7 @@
             </div>
             <div class="detail_input">
               <BaseInput
-                v-model="topValue"
+                v-model="bottomValue"
                 :placeholder="`${$t('common.Pleaseenterusdt')}${bottomCoinTitle}`"
                 :isDemi="true"
                 :maxIcon="true"
@@ -58,11 +58,12 @@
 
 <script setup lang="ts" name="">
   import { nanoid } from 'nanoid';
+  import { fixN } from '/@/utils/BigNumber';
   import { getImages } from '/@/utils/common';
   import { usePublicMethod, useStoreMethod } from '/@/utils/publicMethod';
   import { setSwap } from '/@/services';
   const { Toast, t } = usePublicMethod();
-  const { options, contract, getFullAccount, getIsButtonLoading, getUserInfo, getProvider } = useStoreMethod();
+  const { options, contract, getFullAccount, getLedgerPirce, getUserInfo, getProvider } = useStoreMethod();
   const topValue = ref('');
   const bottomValue = ref('');
   const currentType = ref(1);
@@ -72,7 +73,13 @@
   watch(
     () => topValue.value,
     (newValue) => {
-      bottomValue.value = newValue;
+      bottomValue.value = fixN.div(newValue, getLedgerPirce.value);
+    }
+  );
+  watch(
+    () => bottomValue.value,
+    (newValue) => {
+      topValue.value = fixN.mul(newValue, getLedgerPirce.value);
     }
   );
   const topCoinImage = computed(() => {

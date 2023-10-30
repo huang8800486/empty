@@ -30,4 +30,5 @@ export interface ContratStateType {
   WTToken: string | number;
   userInfo: userInfoType;
   userCode: number;
+  ledgerPirce: number;
 }

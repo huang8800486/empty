@@ -39,6 +39,15 @@ export const useContractStore = defineStore({
     },
     async initContractMethod() {
       console.log('initContractMethod');
+      this.ledgerInstance
+        .getPrice()
+        .then((result: any) => {
+          this.ledgerPirce = +formatUnits(result);
+          console.log('reledgerPirce', this.ledgerPirce);
+        })
+        .catch((err: any) => {
+          console.log('reledgerPirce', err);
+        });
       // 全網已鑄造NFT
       // getContractMethod(this.GAMEINSTANCE, 'lastUserId', 'totalUser', { toS: true });
     },
@@ -118,13 +127,13 @@ export const useContractStore = defineStore({
           if (productIds.length > 0) {
             getOrder({ address: fullAccount, product_ids: productIds })
               .then((res: any) => {
-                console.log('getOrder', res, res.length);
                 this.originList = [];
                 this.originList.length = 0;
                 if (res && res.length) {
                   for (let j = 0; j < res.length; j++) {
                     const items = res[j];
                     const origin = this.coinList[items.coin_symbol][items.product_id];
+                    console.log('origin', origin);
                     // if (items.)
                     origin.status = items.status;
                     origin.orderList = items;
@@ -145,7 +154,7 @@ export const useContractStore = defineStore({
                       origin.children[0].disabled = true;
                       origin.children[1].disabled = true;
                       origin.children[2].disabled = true;
-                    } else if (origin.status === 3) {
+                    } else if (origin.status === 3 || origin.orderList.is_open === 2) {
                       origin.children[0].disabled = true;
                       origin.children[1].disabled = false;
                       origin.children[2].disabled = true;

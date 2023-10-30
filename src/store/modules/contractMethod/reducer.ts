@@ -9,6 +9,7 @@ export const initState: ContratStateType = {
   WTToken: '',
   isUsdtApprove: false,
   isWtApprove: false,
+  ledgerPirce: 0,
   coinList: {
     USDT: {},
     WT: {},
