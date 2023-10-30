@@ -1,4 +1,3 @@
-import Web3 from 'web3';
 import { ethers } from 'ethers';
 import Web3Modal from 'web3modal';
 import { providerOptions } from './providerOptions';
