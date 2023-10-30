@@ -42,7 +42,7 @@ export const useContractStore = defineStore({
       this.ledgerInstance
         .getPrice()
         .then((result: any) => {
-          this.ledgerPirce = +formatUnits(result);
+          this.ledgerPirce = +fixD(+formatUnits(result), formatDigit);
           console.log('reledgerPirce', this.ledgerPirce);
         })
         .catch((err: any) => {

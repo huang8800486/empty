@@ -59,9 +59,10 @@
 <script setup lang="ts" name="">
   import { nanoid } from 'nanoid';
   import { fixN } from '/@/utils/BigNumber';
-  import { getImages } from '/@/utils/common';
+  import { getImages, fixD } from '/@/utils/common';
   import { usePublicMethod, useStoreMethod } from '/@/utils/publicMethod';
   import { setSwap } from '/@/services';
+  import { formatUnits, formatDigit } from '/@/utils/formatEth';
   const { Toast, t } = usePublicMethod();
   const { options, contract, getFullAccount, getLedgerPirce, getUserInfo, getProvider } = useStoreMethod();
   const topValue = ref('');
