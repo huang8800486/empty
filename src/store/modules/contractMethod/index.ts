@@ -142,7 +142,11 @@ export const useContractStore = defineStore({
                     origin.deposited = items.order_price;
                     origin.redeemable = +items.order_price + +items.income;
                     origin.children[1].value = origin.redeemable;
-                    if (origin.status === 0) {
+                    if (origin.status === 3 || origin.orderList.is_open == 2) {
+                      origin.children[0].disabled = true;
+                      origin.children[1].disabled = false;
+                      origin.children[2].disabled = true;
+                    } else if (origin.status === 0) {
                       origin.children[0].disabled = true;
                       origin.children[1].disabled = true;
                       origin.children[2].disabled = false;
@@ -153,10 +157,6 @@ export const useContractStore = defineStore({
                     } else if (origin.status === 2) {
                       origin.children[0].disabled = true;
                       origin.children[1].disabled = true;
-                      origin.children[2].disabled = true;
-                    } else if (origin.status === 3 || origin.orderList.is_open === 2) {
-                      origin.children[0].disabled = true;
-                      origin.children[1].disabled = false;
                       origin.children[2].disabled = true;
                     }
                     this.originList.push(origin);
