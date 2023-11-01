@@ -15,7 +15,9 @@
       <span>
         <div class="operate" v-if="scope.item.isApprove">
           <BaseButton @callback="openRecharge(scope.item.name)">{{ $t('common.Recharge') }}</BaseButton>
-          <BaseButton @callback="openWithdraw(scope.item.name)" :disabled="scope.item.balance == 0">{{ $t('common.Withdraw') }}</BaseButton>
+          <BaseButton @callback="openWithdraw(scope.item.name)" :disabled="true || scope.item.balance == 0">{{
+            $t('common.Withdraw')
+          }}</BaseButton>
         </div>
         <div class="operate" v-else>
           <BaseButton :btnId="nanoid()" @callback="approve(scope.item.name)">{{ $t('common.Authorized') }}</BaseButton>
@@ -60,7 +62,7 @@
     return fixD(getUserInfo.value.usdt_profit, formatDigit);
   });
   const allUsdtBalance = computed(() => {
-    return fixD(+getUserInfo.value.usdt_balance+(+getUserInfo.value.usdt_freeze), formatDigit);
+    return fixD(+getUserInfo.value.usdt_balance + +getUserInfo.value.usdt_freeze, formatDigit);
   });
   const wtBalance = computed(() => {
     return fixD(+getUserInfo.value.wt_balance, formatDigit);
@@ -72,7 +74,7 @@
     return fixD(getUserInfo.value.wt_profit, formatDigit);
   });
   const allWtBalance = computed(() => {
-    return fixD(+getUserInfo.value.wt_balance+(+getUserInfo.value.wt_freeze), formatDigit);
+    return fixD(+getUserInfo.value.wt_balance + +getUserInfo.value.wt_freeze, formatDigit);
   });
   const currentObj = computed(() => {
     return {
