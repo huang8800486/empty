@@ -2,13 +2,17 @@ import { ContratStateType } from './types';
 
 export const initState: ContratStateType = {
   ledgerInstance: null,
+  rechargeInstance: null,
   usdtInstance: null,
   wtInstance: null,
   ledgerToken: '',
+  rechargeToken: '',
   USDTToken: '',
   WTToken: '',
   isUsdtApprove: false,
   isWtApprove: false,
+  isReUsdtApprove: false,
+  isReWtApprove: false,
   ledgerPirce: 0,
   coinList: {
     USDT: {},

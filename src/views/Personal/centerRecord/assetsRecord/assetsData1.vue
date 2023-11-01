@@ -13,14 +13,21 @@
       <!-- <span>{{ scope.item.profit }}</span> -->
       <span>{{ scope.item.allbalance }}</span>
       <span>
-        <div class="operate" v-if="scope.item.isApprove">
-          <BaseButton @callback="openRecharge(scope.item.name)">{{ $t('common.Recharge') }}</BaseButton>
-          <BaseButton @callback="openWithdraw(scope.item.name)" :disabled="true || scope.item.balance == 0">{{
-            $t('common.Withdraw')
-          }}</BaseButton>
-        </div>
-        <div class="operate" v-else>
-          <BaseButton :btnId="nanoid()" @callback="approve(scope.item.name)">{{ $t('common.Authorized') }}</BaseButton>
+        <div class="operate">
+          <template v-if="scope.item.isRechargeApprove">
+            <BaseButton @callback="openRecharge(scope.item.name)">{{ $t('common.Recharge') }}</BaseButton>
+          </template>
+          <div class="operate" v-else>
+            <BaseButton :btnId="nanoid()" @callback="approve('recharge', scope.item.name)">{{ $t('common.Authorized') }}</BaseButton>
+          </div>
+          <template v-if="scope.item.isWithdrawApprove">
+            <BaseButton @callback="openWithdraw(scope.item.name)" :disabled="scope.item.balance == 0">{{
+              $t('common.Withdraw')
+            }}</BaseButton>
+          </template>
+          <div class="operate" v-else>
+            <BaseButton :btnId="nanoid()" @callback="approve('withdraw', scope.item.name)">{{ $t('common.Authorized') }}</BaseButton>
+          </div>
         </div>
       </span>
     </BaseList>
@@ -49,7 +56,8 @@
   import { formatDigit, getInstance } from '/@/utils/formatEth';
   import { setRechargeUSDT, setRechargeWT, setWithdrawUSDT, setWithdrawWT } from '/@/services';
   const { options, contract, getFullAccount, getLedgerInstance, getLedgerToken } = useStoreMethod();
-  const { getUserInfo, getIsUsdtApprove, getIsWtApprove, getUsdtInstance, getWtInstance, getUSDTToken, getWTToken } = useStoreMethod();
+  const { getUserInfo, getIsUsdtApprove, getIsWtApprove, getUsdtInstance, getWtInstance } = useStoreMethod();
+  const { getIsReUsdtApprove, getIsReWtApprove, getRechargeInstance, getRechargeToken } = useStoreMethod();
   const { Toast, t } = usePublicMethod();
 
   const usdtBalance = computed(() => {
@@ -104,7 +112,8 @@
         freeze: usdtFreeze.value,
         profit: usdtProfi.value,
         allbalance: allUsdtBalance.value,
-        isApprove: getIsUsdtApprove.value,
+        isWithdrawApprove: getIsUsdtApprove.value,
+        isRechargeApprove: getIsReUsdtApprove.value,
       },
       {
         name: 'WT',
@@ -112,7 +121,8 @@
         freeze: wtFreeze.value,
         profit: wtProfi.value,
         allbalance: allWtBalance.value,
-        isApprove: getIsWtApprove.value,
+        isWithdrawApprove: getIsWtApprove.value,
+        isRechargeApprove: getIsReWtApprove.value,
       },
     ];
   });
@@ -144,7 +154,7 @@
       currentObj.value[currentFlag.value]
         .rechargeMethods({ address: getFullAccount.value, value: rechargeValue.value })
         .then((result: any) => {
-          getInstance(getLedgerInstance.value, currentObj.value[currentFlag.value].rechargeName, [
+          getInstance(getRechargeInstance.value, currentObj.value[currentFlag.value].rechargeName, [
             result.amount,
             result.deadline,
             result.hash,
@@ -205,10 +215,14 @@
           });
         });
   };
-  const approve = (name: string) => {
+  const approve = (type: string, name: string) => {
     // console.log('name', currentObj.value[name], getLedgerToken.value);
+    const obj = {
+      recharge: getRechargeToken.value,
+      withdraw: getLedgerToken.value,
+    };
     getInstance(currentObj.value[name].contract, 'approve', [
-      getLedgerToken.value,
+      obj[type],
       '0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff',
     ]).then(() => {
       contract.initApproveMethod(getFullAccount.value);

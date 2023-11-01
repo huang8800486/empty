@@ -23,9 +23,13 @@ export interface ContratStateType {
   ledgerInstance: any;
   usdtInstance: any;
   wtInstance: any;
+  rechargeInstance: any;
   isUsdtApprove: boolean;
   isWtApprove: boolean;
+  isReUsdtApprove: boolean;
+  isReWtApprove: boolean;
   ledgerToken: string | number;
+  rechargeToken: string | number;
   USDTToken: string | number;
   WTToken: string | number;
   userInfo: userInfoType;

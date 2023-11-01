@@ -62,8 +62,11 @@ export function useEthers() {
   const startEther = () => {
     const signer = toRaw(getProvider.value); //获取原始数据设置
     const ledgerInstance = getContract({ abi: ledger, address: tokenObj.ledgerToken, signer: signer });
+    const rechargeInstance = getContract({ abi: ledger, address: tokenObj.rechargeToken, signer: signer });
     contract.SETLEDGERINSTANCE(ledgerInstance);
     contract.SETLEDGERTOKEN(tokenObj.ledgerToken);
+    contract.SETRECHARGEINSTANCE(rechargeInstance);
+    contract.SETRECHARGETOKEN(tokenObj.rechargeToken);
     const usdtInstance = new ethers.Contract(tokenObj.USDTToken + '', ERC20ABI, signer);
     const wtInstance = new ethers.Contract(tokenObj.WTToken + '', ERC20ABI, signer);
     contract.SETUSDTINSTANCE(usdtInstance);

@@ -16,6 +16,12 @@ export const useContractStore = defineStore({
     SETLEDGERINSTANCE(info: any) {
       this.ledgerInstance = info;
     },
+    SETRECHARGEINSTANCE(info: any) {
+      this.rechargeInstance = info;
+    },
+    SETRECHARGETOKEN(info: any) {
+      this.rechargeToken = info;
+    },
     SETLEDGERTOKEN(info: string | number) {
       this.ledgerToken = info;
     },
@@ -68,6 +74,15 @@ export const useContractStore = defineStore({
         console.log('isUsdtApprove-失败APPROVE-', false);
         this.isUsdtApprove = false;
       }
+      const balance2 = await this.usdtInstance.balanceOf(fullAccount); // 查询用户的余额
+      const allowance2 = await this.usdtInstance.allowance(fullAccount, this.rechargeToken); // 查询授权的余额
+      if (Number(allowance2.toString()) > 0 && Number(allowance2.toString()) >= Number(balance2.toString())) {
+        console.log('isReUsdtApprove-成功APPROVE-', true);
+        this.isReUsdtApprove = true;
+      } else {
+        console.log('isReUsdtApprove-失败APPROVE-', false);
+        this.isReUsdtApprove = false;
+      }
     },
     async initApproveWtMethod(fullAccount: Partial<string>) {
       const balance = await this.wtInstance.balanceOf(fullAccount); // 查询用户的余额
@@ -78,6 +93,15 @@ export const useContractStore = defineStore({
       } else {
         console.log('isWtApprove-失败APPROVE-', false);
         this.isWtApprove = false;
+      }
+      const balance2 = await this.wtInstance.balanceOf(fullAccount); // 查询用户的余额
+      const allowance2 = await this.wtInstance.allowance(fullAccount, this.rechargeToken); // 查询授权的余额
+      if (Number(allowance2.toString()) > 0 && Number(allowance2.toString()) >= Number(balance2.toString())) {
+        console.log('isReWtApprove-成功APPROVE-', true);
+        this.isReWtApprove = true;
+      } else {
+        console.log('isReWtApprove-失败APPROVE-', false);
+        this.isReWtApprove = false;
       }
     },
     async intProductOrder(fullAccount: Partial<string>) {
