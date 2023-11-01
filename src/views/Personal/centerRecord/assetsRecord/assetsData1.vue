@@ -16,18 +16,21 @@
         <div class="operate">
           <template v-if="scope.item.isRechargeApprove">
             <BaseButton @callback="openRecharge(scope.item.name)">{{ $t('common.Recharge') }}</BaseButton>
+            <BaseButton @callback="openWithdraw(scope.item.name)" :disabled="scope.item.balance == 0">{{
+              $t('common.Withdraw')
+            }}</BaseButton>
           </template>
           <div class="operate" v-else>
             <BaseButton :btnId="nanoid()" @callback="approve('recharge', scope.item.name)">{{ $t('common.Authorized') }}</BaseButton>
           </div>
-          <template v-if="scope.item.isWithdrawApprove">
+          <!-- <template>
             <BaseButton @callback="openWithdraw(scope.item.name)" :disabled="scope.item.balance == 0">{{
               $t('common.Withdraw')
             }}</BaseButton>
           </template>
           <div class="operate" v-else>
             <BaseButton :btnId="nanoid()" @callback="approve('withdraw', scope.item.name)">{{ $t('common.Authorized') }}</BaseButton>
-          </div>
+          </div> -->
         </div>
       </span>
     </BaseList>
